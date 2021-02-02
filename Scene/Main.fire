@@ -190,7 +190,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -112,
+        -378.504,
         42.521,
         0,
         0,
@@ -266,7 +266,7 @@
       "__id__": 3
     },
     "_enabled": true,
-    "tag": 0,
+    "tag": 1,
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 1,
@@ -318,7 +318,7 @@
       "array": [
         0,
         0,
-        248.54929088613392,
+        1662.7687752661222,
         0,
         0,
         0,
@@ -536,8 +536,8 @@
         0,
         0,
         1,
-        1,
-        1,
+        0.255,
+        0.597,
         1
       ]
     },
@@ -694,6 +694,8 @@
       "__id__": 17
     },
     "_enabled": true,
+    "type": 0,
+    "E": 0,
     "_id": "27MZAEli9EHYAhqU06UMet"
   },
   {
@@ -766,6 +768,8 @@
       "__id__": 19
     },
     "_enabled": true,
+    "eList": [],
+    "index": 0,
     "_id": "c8HfceREtI/6bC7wzCNqyR"
   },
   {
@@ -1227,11 +1231,25 @@
     },
     "_enabled": true,
     "direction": 0,
-    "slideEvents": [],
+    "slideEvents": [
+      {
+        "__id__": 29
+      }
+    ],
     "_N$handle": {
       "__id__": 27
     },
     "_N$progress": 0.5,
     "_id": "29ML73fgRITrYd3H/Q2Wnj"
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 12
+    },
+    "component": "",
+    "_componentId": "42646F5MVJKFp6o20iauphW",
+    "handler": "setAng",
+    "customEventData": ""
   }
 ]

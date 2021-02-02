@@ -9,21 +9,16 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
+        // 发动机类型
+        type:{
+            default:0,
+            type:cc.Integer,
+        },
+        // 内部能源
+        E:{
+            default:0,
+            type:cc.Integer,
+        }
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -35,4 +30,35 @@ cc.Class({
     },
 
     // update (dt) {},
+
+    /**
+     * 初始化发动机
+     */
+    initEng: function(){
+        ;
+    },
+
+    /**
+     * 变更当前发动机类型
+     * @param {*} type 发动机类型
+     * @param {*} E 发动机初始能源
+     */
+    changeEng: function(type, E){
+        ;
+    },
+
+    /**
+     * 添加能源
+     */
+    addE: function(){
+        ;
+    },
+
+    /**
+     * 使用能量
+     * @param {*} wast 使用量
+     */
+    use:function(wast){
+        ;
+    }
 });

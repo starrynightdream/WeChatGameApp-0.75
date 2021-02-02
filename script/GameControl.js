@@ -125,7 +125,7 @@ cc.Class({
      * @param {*} type 事件类型，具体另作定义
      */
     callEvent: function(type){
-        // 各类事件具体处理逻辑
+        // 各类事件具体处理逻辑填写在此处
         ;
     }
 });

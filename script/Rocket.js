@@ -15,21 +15,6 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
         // 步长
         step:{
             default:10,
@@ -92,6 +77,8 @@ cc.Class({
 
         // 计算能耗
 
+        // 确认状态
+        this.node.angle = ((this.angle *180 /Math.PI) -90);
     },
 
     /**
@@ -182,5 +169,13 @@ cc.Class({
      */
     getEngE(){
         ;
+    },
+
+    /**
+     * 通过拖动条变更方向
+     * @param {*} slider 拖动条
+     */
+    setAng(slider){
+        this.angle -= (slider.progress - 0.5) *0.05;
     },
 });
