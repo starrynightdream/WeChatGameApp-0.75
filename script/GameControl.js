@@ -73,6 +73,8 @@ cc.Class({
                 element.destroyItem()
             }
         });
+
+        
     },
 
  

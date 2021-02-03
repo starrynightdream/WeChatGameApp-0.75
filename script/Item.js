@@ -29,6 +29,14 @@ cc.Class({
     // update (dt) {},
 
     /**
+     * 创建一个物件，请默认将物件初始化在上方屏幕外
+     * @param {*} xp 一个0-屏幕宽度的数据，用于初始化物件位置
+     */
+    createItem: function(xp){
+        ;
+    },
+
+    /**
      * 对火箭做什么 实现请继承
      * @param {Rocket} rocket 火箭类
      */
