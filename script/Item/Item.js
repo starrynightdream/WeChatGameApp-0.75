@@ -12,10 +12,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        DeadLine:{
-            default:0,
-            type: cc.Float
-        }
+        
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -30,7 +27,7 @@ cc.Class({
 
     /**
      * 创建一个物件，请默认将物件初始化在上方屏幕外
-     * @param {*} xp 一个0-屏幕宽度的数据，用于初始化物件位置
+     * @param {*} xp 一个 -屏幕宽度/2 到 屏幕宽度/2 的数据，用于初始化物件位置
      */
     createItem: function(xp){
         ;

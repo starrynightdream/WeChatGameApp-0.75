@@ -49,6 +49,11 @@ cc.Class({
             default: [],
             type: cc.Prefab, 
             tooltip:"提供预制体让其生成"
+        },
+        Canvas:{
+            default:null,
+            type:cc.Node,
+            tooltip:"容器节点",
         }
     },
 
@@ -57,6 +62,8 @@ cc.Class({
     // onLoad () {},
 
     start () {
+        // 获取屏幕宽度
+        this.width = 1080
     },
 
     update (dt) {
@@ -64,17 +71,20 @@ cc.Class({
         // 移动所有item
         let vy = this.rocket.Vy()
         this.ItemList.forEach(element => {
-            if (! element){
-                console.log(element)
-                return
-            }
             element.Move(dt, vy)
-            if (element.checkDead()){
-                element.destroyItem()
-            }
         });
 
-        
+        for (let i=this.ItemList.length -1; i>-1; i--){
+
+            if (this.ItemList[i] && this.ItemList[i].checkDead()){
+                this.ItemList[i].destroyItem()
+                this.ItemList.splice(i,i+1)
+            }
+        }
+        // 判断是否生成新关卡
+        if (this.ItemList.length == 0){
+            this.createLevel()
+        }
     },
 
  
@@ -111,7 +121,17 @@ cc.Class({
      * 创建各类道具，形成关卡
      */
     createLevel: function(){
-        ;
+        // 具体逻辑需要更复杂
+        // 位置种子
+        let seed = Math.random() *this.width - this.width/2
+        // 第几个障碍
+        let code = 0
+
+        var item = cc.instantiate(this.ItemTypeList[code])
+        var itemScr = item.getComponent("Item")
+        itemScr.createItem(seed)
+        this.Canvas.addChild(item)
+        this.ItemList[this.ItemList.length] = itemScr
     },
 
     /**

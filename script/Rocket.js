@@ -69,6 +69,8 @@ cc.Class({
         manager.enabledDebugDraw = true
 
         this.gameControl = this.gameControlNode.getComponent("GameControl")
+
+        this.alive = true
     },
 
     update (dt) {
@@ -147,7 +149,8 @@ cc.Class({
      * 设置火箭结束活动
      */
     death: function() {
-        ;
+        this.alive = false
+        this.speed = 0
     },
 
     /**
@@ -176,6 +179,7 @@ cc.Class({
      * @param {*} slider 拖动条
      */
     setAng(slider){
-        this.angle -= (slider.progress - 0.5) *0.05;
+        if (this.alive)
+            this.angle -= (slider.progress - 0.5) *0.05;
     },
 });
