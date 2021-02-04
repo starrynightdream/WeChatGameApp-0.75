@@ -38,12 +38,6 @@ cc.Class({
             type:cc.Node, 
             tooltip:"乌云"
         },
-        // item物件列表
-        ItemList:{
-            default:[],
-            type: Item, 
-            tooltip:"记录所有生成的item"
-        },
         // 记录所有预制体
         ItemTypeList: {
             default: [],
@@ -64,6 +58,7 @@ cc.Class({
     start () {
         // 获取屏幕宽度
         this.width = 1080
+        this.ItemList = []
     },
 
     update (dt) {
@@ -113,7 +108,7 @@ cc.Class({
      * 加分
      * @param {*} num 添加多少分数
      */
-    addScore: function(num) {
+    addScore: function(score) {
         ;
     },
 
@@ -121,7 +116,7 @@ cc.Class({
      * 创建各类道具，形成关卡
      */
     createLevel: function(){
-        // 具体逻辑需要更复杂
+        // 具体逻辑需要变更
         // 位置种子
         let seed = Math.random() *this.width - this.width/2
         // 第几个障碍
@@ -148,6 +143,14 @@ cc.Class({
      */
     callEvent: function(type){
         // 各类事件具体处理逻辑填写在此处
+        ;
+    },
+
+    /**
+     * 通过UI显示信息
+     * @param {*} info 需要显示的信息
+     */
+    info: function(info){
         ;
     }
 });

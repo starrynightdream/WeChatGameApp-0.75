@@ -34,7 +34,7 @@ cc.Class({
     /**
      * 初始化发动机
      */
-    initEng: function(){
+    reSet: function(){
         ;
     },
 

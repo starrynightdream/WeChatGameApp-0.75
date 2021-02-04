@@ -21,18 +21,6 @@ cc.Class({
             type: cc.Integer,
             tooltip:"步长"
         },
-        // 速度
-        speed: {
-            default: 1,
-            type: cc.Float,
-            tooltip:"速度"
-        },
-        // 角度
-        angle: {
-            default: Math.PI /2,
-            type:  cc.Float,
-            tooltip:"弧度，0为朝右"
-        },
         // 耗油量
         wast:{
             default: 1,
@@ -71,6 +59,8 @@ cc.Class({
         this.gameControl = this.gameControlNode.getComponent("GameControl")
 
         this.alive = true
+        this.speed = 20
+        this.angle = Math.PI /2
     },
 
     update (dt) {

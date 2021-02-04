@@ -12,16 +12,6 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // 能量槽
-        eList:{
-            default: [],
-            type: cc.Float
-        },
-        // 使用哪个槽
-        index:{
-            default:0,
-            type:cc.Integer
-        }
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -29,7 +19,8 @@ cc.Class({
     // onLoad () {},
 
     start () {
-        this.eList = [0,0,0,0,0]
+        this.eList = [0,0,0,0,0]  // 能源槽
+        this.index = 0 // 使用第几个能源槽
     },
 
     // update (dt) {},
@@ -37,7 +28,7 @@ cc.Class({
     /**
      * 初始化能量槽
      */
-    initPC(){
+    reSet(){
         ;
     },
 
