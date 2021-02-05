@@ -10,6 +10,7 @@
 
 var PowerCore = require("PowerCore")
 var Engine = require("Engine")
+var ControlBar = require("ControlBar")
 
 cc.Class({
     extends: cc.Component,
@@ -20,12 +21,6 @@ cc.Class({
             default:10,
             type: cc.Integer,
             tooltip:"步长"
-        },
-        // 耗油量
-        wast:{
-            default: 1,
-            type: cc.Float,
-            tooltip:"能耗"
         },
         // 引擎
         engine:{
@@ -39,12 +34,18 @@ cc.Class({
             type: PowerCore,
             tooltip:"能量槽类"
         },
+        // 控制版面
+        controlBar:{
+            default:null,
+            type:ControlBar,
+            tooltip:"控制滑动板"
+        },
 
         gameControlNode:{
             default: null,
             type: cc.Node,
             tooltip:"游戏控制器的节点"
-        }
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -58,9 +59,8 @@ cc.Class({
 
         this.gameControl = this.gameControlNode.getComponent("GameControl")
 
-        this.alive = true
-        this.speed = 20
         this.angle = Math.PI /2
+        this.reSetRocket()
     },
 
     update (dt) {
@@ -68,9 +68,19 @@ cc.Class({
         this.node.x += this.Vx() *dt *this.step
 
         // 计算能耗
+        let oil = this.engine.use(this.wast *dt)
+        oil = this.powerCore.use(oil)
+        if (!(oil && this.alive)){
+            // 能量不足消耗
+            this.death()
+            this.gameControl.GameOver()
+        }
 
-        // 确认状态
+        // 对应反映火箭状态
         this.node.angle = ((this.angle *180 /Math.PI) -90);
+
+        // 推送消息
+        this.controlBar.setEData(this.getEngE(), this.getE())
     },
 
     /**
@@ -87,6 +97,19 @@ cc.Class({
     },
 
     // 接口
+
+    /**
+     * 游戏开始的火箭设定
+     */
+    reSetRocket: function(){
+        this.engine.reSetEng()
+        this.powerCore.reSetPC()
+        this.controlBar.reSetConBar()
+
+        this.speed = 20
+        this.alive = true
+        this.wast = 1
+    },
 
     /**
      * 速度
@@ -123,16 +146,16 @@ cc.Class({
      * @param {Float} E 发动机中的能量
      */
     setEng: function(type, E){
-        ;
+        this.engine.changeEng(type, E)
     },
 
     /**
      * 添加能量
-     * @param {*} type 能量类型
+     * @param {*} type 能量是否清洁
      * @param {*} E 能量大小
      */
     addE: function(type, E) {
-        ;
+        this.powerCore.addE(type, E, E)
     },
 
     /**
@@ -141,27 +164,30 @@ cc.Class({
     death: function() {
         this.alive = false
         this.speed = 0
+        this.node.x = 0
+        this.angle = Math.PI /2
+        this.wast = 0
     },
 
     /**
      * 返回当前能量槽
      */
     getE(){
-        return [];
+        return this.powerCore.readPC()
     },
 
     /**
      * 获取发动机类型
      */
     getEngType(){
-        ;
+        return this.engine.type
     },
 
     /**
      * 获取发动机能量槽
      */
     getEngE(){
-        ;
+        return this.engine.E / this.engine.EMAX
     },
 
     /**

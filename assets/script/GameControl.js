@@ -87,14 +87,17 @@ cc.Class({
      * 游戏结束
      */
     GameOver : function(){
-        ;
+        this.ItemList.forEach(element =>{
+            element.destroyItem()
+        })
+        this.ItemList.splice(0)
     },
 
     /**
      * 游戏开始
      */
     GameStart: function(){
-        ;
+        this.rocket.reSetRocket()
     },
 
     /**
