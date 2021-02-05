@@ -8,6 +8,26 @@
 
 克隆至本地后使用cocos导入即可
 
+## 些许注意事项 ##
+art 为美术资源文件夹，放置单独的：图片、粒子效果、材质等
+
+preform 为预制体文件夹，其中
+
+    Item文件夹放置继承自Item.js的文件
+
+    background 文件夹放置背景和云的预制体
+
+    UI预制体放在还未创建的UI文件夹下
+
+Scene 为场景文件夹
+
+script为脚本文件夹，其中
+
+    Item文件夹放置继承自Item.js的文件，后缀根据类型选择：Battery、Collection、Hinder、Eng
+
+    UI文件夹放置继承自UI.js的文件
+
+
 ## 组件 ##
 - 物件类
     + 所有项目继承同一父类
