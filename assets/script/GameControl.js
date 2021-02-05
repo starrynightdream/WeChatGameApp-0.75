@@ -14,6 +14,7 @@
 
 var Rocket = require('Rocket')
 var Item = require("Item")
+var UIControl = require("UIControl")
 
 cc.Class({
     extends: cc.Component,
@@ -38,17 +39,22 @@ cc.Class({
             type:cc.Node, 
             tooltip:"乌云"
         },
+        UIControl:{
+            default:null,
+            type:UIControl,
+            tooltip:"UI控制"
+        },
+        Canvas:{
+            default:null,
+            type:cc.Node,
+            tooltip:"容器节点",
+        },
         // 记录所有预制体
         ItemTypeList: {
             default: [],
             type: cc.Prefab, 
             tooltip:"提供预制体让其生成"
         },
-        Canvas:{
-            default:null,
-            type:cc.Node,
-            tooltip:"容器节点",
-        }
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -87,10 +93,12 @@ cc.Class({
      * 游戏结束
      */
     GameOver : function(){
+        
         this.ItemList.forEach(element =>{
             element.destroyItem()
         })
         this.ItemList.splice(0)
+        this.UIControl.GameOver()
     },
 
     /**
@@ -98,13 +106,14 @@ cc.Class({
      */
     GameStart: function(){
         this.rocket.reSetRocket()
+        this.UIControl.GameStart()
     },
 
     /**
      * 游戏等待开始
      */
     GameWait: function(){
-        ;
+        this.UIControl.GameWait()
     },
 
     /**
