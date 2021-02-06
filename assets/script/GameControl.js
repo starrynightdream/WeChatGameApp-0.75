@@ -15,6 +15,7 @@
 var Rocket = require('Rocket')
 var Item = require("Item")
 var UIControl = require("UIControl")
+var Score  = require("Score")
 
 cc.Class({
     extends: cc.Component,
@@ -22,9 +23,9 @@ cc.Class({
     properties: {
     
         // 计分板
-        srore: {
+        score: {
             default:null,
-            type: cc.Node, 
+            type: Score, 
             tooltip:"游戏计分板"
         },
         // 火箭
@@ -39,6 +40,7 @@ cc.Class({
             type:cc.Node, 
             tooltip:"乌云"
         },
+        // ui控制器
         UIControl:{
             default:null,
             type:UIControl,
@@ -99,6 +101,7 @@ cc.Class({
         })
         this.ItemList.splice(0)
         this.UIControl.GameOver()
+        this.score.reSetScore()
     },
 
     /**
@@ -107,6 +110,7 @@ cc.Class({
     GameStart: function(){
         this.rocket.reSetRocket()
         this.UIControl.GameStart()
+        this.score.start(1)
     },
 
     /**
@@ -121,7 +125,7 @@ cc.Class({
      * @param {*} num 添加多少分数
      */
     addScore: function(score) {
-        ;
+        this.score.addScore(score)
     },
 
     /**
@@ -163,6 +167,6 @@ cc.Class({
      * @param {*} info 需要显示的信息
      */
     info: function(info){
-        ;
+        this.UIControl.info(info)
     }
 });
