@@ -82,18 +82,15 @@
       },
       {
         "__id__": 17
-      },
-      {
-        "__id__": 55
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 56
+        "__id__": 55
       },
       {
-        "__id__": 57
+        "__id__": 56
       }
     ],
     "_prefab": null,
@@ -183,7 +180,7 @@
       "array": [
         0,
         0,
-        241.6210876558584,
+        248.54929088613392,
         0,
         0,
         0,
@@ -607,6 +604,12 @@
     "ItemTypeList": [
       {
         "__uuid__": "8e7f7785-5393-4f00-8ae1-0acddd052bba"
+      },
+      {
+        "__uuid__": "b73ecaf3-6443-4a8c-994a-13e09b013403"
+      },
+      {
+        "__uuid__": "7bbfbca3-fd53-4abe-ad06-5af3b612da81"
       }
     ],
     "_id": "9dlwVGMWVLTIzPJ5IjSmIf"
@@ -2295,64 +2298,6 @@
     },
     "fileId": "908oDZp/9IBZaSyWq3E8+i",
     "sync": false
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "BaseBattery",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 2
-    },
-    "_children": [],
-    "_active": true,
-    "_components": [],
-    "_prefab": null,
-    "_opacity": 255,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_trs": {
-      "__type__": "TypedArray",
-      "ctor": "Float64Array",
-      "array": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        1,
-        1,
-        1
-      ]
-    },
-    "_eulerAngles": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_skewX": 0,
-    "_skewY": 0,
-    "_is3DNode": false,
-    "_groupIndex": 0,
-    "groupIndex": 0,
-    "_id": "6bIi44JdVOVYgGcQ//76W0"
   },
   {
     "__type__": "cc.Canvas",

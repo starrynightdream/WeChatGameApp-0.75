@@ -42,11 +42,11 @@ cc.Class({
     readPC(){
         let ans = [0,0,0,0,0]
         for (let i=0;i<5; i++){
-            let p = (i + this.index) %5
+            let p = (i + this.index - this.count +6) %5
             if (this.eList[p] !=0){
                 ans[i] = this.eList[p] / this.eMaxList[p]
             }
-            ans[i] *= this.eList[p]
+            ans[i] *= this.eClearList[p]
         }
         return ans
     },
@@ -63,10 +63,11 @@ cc.Class({
         if (this.count == 5){
             return false
         }
-        let p = (this.index - this.count + 4) %5
+        let p = (this.index - this.count + 5) %5
         this.eList[p] = E
         this.eMaxList[p] = EMAX
         this.eClearList[p] = isClear?1:-1
+        this.count +=1
         return true
     },
 
@@ -76,6 +77,9 @@ cc.Class({
      * @returns {boolean} 是否足够消耗
      */
     use:function(wast){
+        if (wast <=0.0001){
+            return true
+        }
         let i,dis
         while (this.count!=0){
             i = this.index
@@ -84,7 +88,7 @@ cc.Class({
             this.eList[i] = Math.max(-dis, 0)
             if (wast >0){
                 this.count -=1
-                this.index = (i + 5) %5
+                this.index = (i + 4) %5
             }else{
                 break
             }

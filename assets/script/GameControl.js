@@ -136,7 +136,7 @@ cc.Class({
         // 位置种子
         let seed = Math.random() *this.width - this.width/2
         // 第几个障碍
-        let code = 0
+        let code = Math.floor(Math.random() *100) %(this.ItemTypeList.length)
 
         var item = cc.instantiate(this.ItemTypeList[code])
         var itemScr = item.getComponent("Item")

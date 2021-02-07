@@ -72,8 +72,9 @@ cc.Class({
 
         // 计算能耗
         let oil = this.engine.use(this.wast *dt)
-        oil = this.powerCore.use(oil)
-        if (!(oil && this.alive)){
+        let overUse = this.powerCore.use(oil)
+
+        if (!(overUse &&this.alive)){
             // 能量不足消耗
             this.death()
             this.gameControl.GameOver()
