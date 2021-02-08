@@ -64,21 +64,16 @@ cc.Class({
     },
 
     update (dt) {
-        if (!this.active){
-            return
-        }
         // this.node.y += this.Vy() *dt *this.step
         this.node.x += this.Vx() *dt *this.step
 
         // 计算能耗
         let oil = this.engine.use(this.wast *dt)
-        let overUse = this.powerCore.use(oil)
-
-        if (!(overUse &&this.alive)){
+        oil = this.powerCore.use(oil)
+        if (!(oil && this.alive)){
             // 能量不足消耗
             this.death()
             this.gameControl.GameOver()
-            this.active = false
         }
 
         // 对应反映火箭状态
@@ -113,7 +108,6 @@ cc.Class({
 
         this.speed = 20
         this.alive = true
-        this.active = true
         this.wast = 1
     },
 
@@ -147,18 +141,6 @@ cc.Class({
     },
     
     /**
-     * 设置火箭结束活动
-     */
-    death: function() {
-        // 届时需平滑过渡
-        this.alive = false
-        this.speed = 0
-        this.node.x = 0
-        this.angle = Math.PI /2
-        this.wast = 0
-    },
-
-    /**
      * 变更发动机类型
      * @param {Number} type 发动机的代号
      * @param {Float} E 发动机中的能量
@@ -175,6 +157,18 @@ cc.Class({
     addE: function(type, E) {
         this.powerCore.addE(type, E, E)
     },
+
+    /**
+     * 设置火箭结束活动
+     */
+    death: function() {
+        this.alive = false
+        this.speed = 0
+        this.node.x = 0
+        this.angle = Math.PI /2
+        this.wast = 0
+    },
+
     /**
      * 返回当前能量槽
      */
@@ -204,4 +198,11 @@ cc.Class({
         if (this.alive)
             this.angle -= (slider.progress - 0.5) *0.05;
     },
+
+    /**
+     * 动画方面
+     */
+    rocketBroke(){
+        console.log("rocket broket====================================")
+    }
 });

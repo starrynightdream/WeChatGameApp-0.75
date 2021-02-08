@@ -14,8 +14,6 @@
 
 var Rocket = require('Rocket')
 var Item = require("Item")
-var UIControl = require("UIControl")
-var Score  = require("Score")
 
 cc.Class({
     extends: cc.Component,
@@ -23,9 +21,9 @@ cc.Class({
     properties: {
     
         // 计分板
-        score: {
+        srore: {
             default:null,
-            type: Score, 
+            type: cc.Node, 
             tooltip:"游戏计分板"
         },
         // 火箭
@@ -40,23 +38,17 @@ cc.Class({
             type:cc.Node, 
             tooltip:"乌云"
         },
-        // ui控制器
-        UIControl:{
-            default:null,
-            type:UIControl,
-            tooltip:"UI控制"
-        },
-        Canvas:{
-            default:null,
-            type:cc.Node,
-            tooltip:"容器节点",
-        },
         // 记录所有预制体
         ItemTypeList: {
             default: [],
             type: cc.Prefab, 
             tooltip:"提供预制体让其生成"
         },
+        Canvas:{
+            default:null,
+            type:cc.Node,
+            tooltip:"容器节点",
+        }
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -95,13 +87,10 @@ cc.Class({
      * 游戏结束
      */
     GameOver : function(){
-        
         this.ItemList.forEach(element =>{
             element.destroyItem()
         })
         this.ItemList.splice(0)
-        this.UIControl.GameOver()
-        this.score.reSetScore()
     },
 
     /**
@@ -109,15 +98,13 @@ cc.Class({
      */
     GameStart: function(){
         this.rocket.reSetRocket()
-        this.UIControl.GameStart()
-        this.score.start(1)
     },
 
     /**
      * 游戏等待开始
      */
     GameWait: function(){
-        this.UIControl.GameWait()
+        ;
     },
 
     /**
@@ -125,7 +112,7 @@ cc.Class({
      * @param {*} num 添加多少分数
      */
     addScore: function(score) {
-        this.score.addScore(score)
+        ;
     },
 
     /**
@@ -136,7 +123,7 @@ cc.Class({
         // 位置种子
         let seed = Math.random() *this.width - this.width/2
         // 第几个障碍
-        let code = Math.floor(Math.random() *100) %(this.ItemTypeList.length)
+        let code = 0
 
         var item = cc.instantiate(this.ItemTypeList[code])
         var itemScr = item.getComponent("Item")
@@ -167,6 +154,6 @@ cc.Class({
      * @param {*} info 需要显示的信息
      */
     info: function(info){
-        this.UIControl.info(info)
+        ;
     }
 });

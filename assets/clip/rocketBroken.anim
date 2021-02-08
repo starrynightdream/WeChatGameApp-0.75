@@ -1,0 +1,53 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "rocketBroken",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1.8333333333333333,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "rocket": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.4166666666666667,
+              "value": 15.850000000000001
+            },
+            {
+              "frame": 0.8333333333333334,
+              "value": -16.405
+            },
+            {
+              "frame": 1.25,
+              "value": -0.20899999999999963
+            }
+          ],
+          "opacity": [
+            {
+              "frame": 1.3,
+              "value": 255
+            },
+            {
+              "frame": 1.8333333333333333,
+              "value": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": [
+    {
+      "frame": 1.25,
+      "func": "rocketBroke",
+      "params": []
+    }
+  ]
+}

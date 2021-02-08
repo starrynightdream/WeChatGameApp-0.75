@@ -1,0 +1,33 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "rocket",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 2.033333333333333,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 22,
+  "curveData": {
+    "props": {
+      "position": [
+        {
+          "frame": 0,
+          "value": [
+            0,
+            18.955,
+            0
+          ]
+        },
+        {
+          "frame": 2.033333333333333,
+          "value": [
+            0,
+            38,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "events": []
+}
