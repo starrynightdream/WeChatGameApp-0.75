@@ -57,8 +57,8 @@
     "_is3DNode": true,
     "_groupIndex": 0,
     "groupIndex": 0,
-    "autoReleaseAssets": false,
-    "_id": "063a8feb-0c5e-4b86-8f9a-b2c82f73403c"
+    "autoReleaseAssets": true,
+    "_id": "04b7b310-059c-47d8-b65f-7d5fb6a9466f"
   },
   {
     "__type__": "cc.Node",
@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        262.42478793420776,
+        249.34337807746343,
         0,
         0,
         0,

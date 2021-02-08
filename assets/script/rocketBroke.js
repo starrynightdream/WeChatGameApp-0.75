@@ -58,6 +58,10 @@ cc.Class({
     rocketBroke(){
         rocketBroke=this.node
         cc.assetManager.loadBundle('preform', (err, bundle) => {
+
+            if (err){
+                console.log(err)
+            }
             bundle.load("Rocket/spiteItem", cc.Prefab, function (err, prefab) {
                 let spiteItem = cc.instantiate(prefab);
                 rocketBroke.addChild(spiteItem)
@@ -72,6 +76,11 @@ cc.Class({
     rocketStarted(){
         rocketBroke=this.node
         cc.assetManager.loadBundle('preform', (err, bundle) => {
+
+            if (err){
+                console.log(err)
+            }
+            
             bundle.load("Rocket/flameItem", cc.Prefab, function (err, prefab) {
                 let flameItem = cc.instantiate(prefab);
                 rocketBroke.addChild(flameItem)
