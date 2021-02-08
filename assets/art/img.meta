@@ -1,8 +1,8 @@
 {
   "ver": "1.1.2",
-  "uuid": "c1cf22a2-efde-41a5-a90a-2d0c73846eb9",
-  "isBundle": true,
-  "bundleName": "preform",
+  "uuid": "fb1ee4df-0f21-4baa-9977-600bf74612c2",
+  "isBundle": false,
+  "bundleName": "",
   "priority": 1,
   "compressionType": {},
   "optimizeHotUpdate": {},
