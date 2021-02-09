@@ -15,47 +15,47 @@
 var Rocket = require('Rocket')
 var Item = require("Item")
 var UIControl = require("UIControl")
-var Score  = require("Score")
+var Score = require("Score")
 
 cc.Class({
     extends: cc.Component,
 
     properties: {
-    
+
         // 计分板
         score: {
-            default:null,
-            type: Score, 
-            tooltip:"游戏计分板"
+            default: null,
+            type: Score,
+            tooltip: "游戏计分板"
         },
         // 火箭
-        rocket:{
+        rocket: {
             default: null,
-            type: Rocket, 
-            tooltip:"火箭"
+            type: Rocket,
+            tooltip: "火箭"
         },
         // 乌云
-        cloud:{
+        cloud: {
             default: null,
-            type:cc.Node, 
-            tooltip:"乌云"
+            type: cc.Node,
+            tooltip: "乌云"
         },
         // ui控制器
-        UIControl:{
-            default:null,
-            type:UIControl,
-            tooltip:"UI控制"
+        UIControl: {
+            default: null,
+            type: UIControl,
+            tooltip: "UI控制",
         },
-        Canvas:{
-            default:null,
-            type:cc.Node,
-            tooltip:"容器节点",
+        Canvas: {
+            default: null,
+            type: cc.Node,
+            tooltip: "容器节点",
         },
         // 记录所有预制体
         ItemTypeList: {
             default: [],
-            type: cc.Prefab, 
-            tooltip:"提供预制体让其生成"
+            type: cc.Prefab,
+            tooltip: "提供预制体让其生成"
         },
     },
 
@@ -63,13 +63,13 @@ cc.Class({
 
     // onLoad () {},
 
-    start () {
+    start() {
         // 获取屏幕宽度
         this.width = 1080
         this.ItemList = []
     },
 
-    update (dt) {
+    update(dt) {
 
         // 移动所有item
         let vy = this.rocket.Vy()
@@ -77,26 +77,25 @@ cc.Class({
             element.Move(dt, vy, this.rocket.node.x)
         });
 
-        for (let i=this.ItemList.length -1; i>-1; i--){
+        for (let i = this.ItemList.length - 1; i > -1; i--) {
 
-            if (this.ItemList[i] && this.ItemList[i].checkDead()){
+            if (this.ItemList[i] && this.ItemList[i].checkDead()) {
                 this.ItemList[i].destroyItem()
-                this.ItemList.splice(i,i+1)
+                this.ItemList.splice(i, i + 1)
             }
         }
         // 判断是否生成新关卡
-        if (this.ItemList.length == 0){
+        if (this.ItemList.length == 0) {
             this.createLevel()
         }
     },
 
- 
+
     /**
      * 游戏结束
      */
-    GameOver : function(){
-        
-        this.ItemList.forEach(element =>{
+    GameOver: function () {
+        this.ItemList.forEach(element => {
             element.destroyItem()
         })
         this.ItemList.splice(0)
@@ -107,7 +106,7 @@ cc.Class({
     /**
      * 游戏开始
      */
-    GameStart: function(){
+    GameStart: function () {
         this.rocket.reSetRocket()
         this.UIControl.GameStart()
         this.score.start(1)
@@ -116,29 +115,29 @@ cc.Class({
     /**
      * 游戏等待开始
      */
-    GameWait: function(){
+    GameWait: function () {
         this.UIControl.GameWait()
     },
 
     /**
      * 加分
-     * @param {*} num 添加多少分数
+     * @param {number} score 添加多少分数
      */
-    addScore: function(score) {
+    addScore(score) {
         this.score.addScore(score)
     },
 
     /**
      * 创建各类道具，形成关卡
      */
-    createLevel: function(){
+    createLevel() {
         // 具体逻辑需要变更
         // 位置种子
-        let seed = Math.random() *this.width - this.width/2
+        const seed = Math.random() * this.width - this.width / 2
         // 第几个障碍
-        let code = Math.floor(Math.random() *100) %(this.ItemTypeList.length)
+        let code = Math.floor(Math.random() * 100) % (this.ItemTypeList.length)
 
-        var item = cc.instantiate(this.ItemTypeList[code])
+        let item = cc.instantiate(this.ItemTypeList[code])
         var itemScr = item.getComponent("Item")
         itemScr.createItem(seed)
         this.Canvas.addChild(item)
@@ -147,17 +146,16 @@ cc.Class({
 
     /**
      * 污染大气
-     * @param {Float} k 污染指数
+     * @param {number} k 污染指数
      */
-    pollute: function(k){
-        ;
+    pollute(k) {
     },
 
     /**
      * 触发函数，如太阳光、风流、拾取电池等事件发生时可调用
      * @param {*} type 事件类型，具体另作定义
      */
-    callEvent: function(type){
+    callEvent(type) {
         // 各类事件具体处理逻辑填写在此处
         ;
     },
@@ -166,7 +164,7 @@ cc.Class({
      * 通过UI显示信息
      * @param {*} info 需要显示的信息
      */
-    info: function(info){
+    info: function (info) {
         this.UIControl.info(info)
     }
 });

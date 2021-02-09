@@ -18,7 +18,7 @@ cc.Class({
     properties: {
         // 步长
         step:{
-            default:10,
+            default: 10,
             type: cc.Integer,
             tooltip:"步长"
         },
