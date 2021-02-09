@@ -27,7 +27,7 @@ cc.Class({
 
     start () {
         // 屏幕宽度
-        this.width = 1080
+        this.width = 1080;
     },
 
     // update (dt) {},
@@ -37,7 +37,7 @@ cc.Class({
      * 默认情况下物件会在屏幕上方被初始化，并且x位置为0
      * @param {*} xp 一个 -屏幕宽度/2 到 屏幕宽度/2 的数据，用于初始化物件位置
      */
-    createItem: function(xp){
+    createItem (xp){
         ;
     },
 
@@ -45,7 +45,7 @@ cc.Class({
      * 对火箭做什么 实现请继承
      * @param {Rocket} rocket 火箭类
      */
-    getItem: function(rocket){
+    getItem (rocket){
         ;
     },
 
@@ -54,24 +54,24 @@ cc.Class({
      * 实现请继承
      * @param {GameControl} GC 游戏控制器
      */
-    setGame: function(GC){
+    setGame (GC){
         ;
     },
     
     /**
      * 判断是否应该摧毁的函数
      */
-    checkDead: function(){
+    checkDead (){
         return false;
     },
 
     /**
      * 销毁item
      */
-    destroyItem: function(){
+    destroyItem (){
 
         if (this.node){
-            this.node.destroy()
+            this.node.destroy();
         }
     },
     
@@ -83,6 +83,6 @@ cc.Class({
      */
     Move(dt, vy, rocketX){
         // 不重写则默认自然向下
-        this.node.y -= vy *dt
+        this.node.y -= vy *dt;
     }
 });

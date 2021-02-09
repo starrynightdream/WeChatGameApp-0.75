@@ -44,7 +44,7 @@ cc.Class({
         UIControl: {
             default: null,
             type: UIControl,
-            tooltip: "UI控制",
+            tooltip: "UI控制"
         },
         Canvas: {
             default: null,
@@ -123,7 +123,7 @@ cc.Class({
      * 加分
      * @param {number} score 添加多少分数
      */
-    addScore(score) {
+    addScore (score) {
         this.score.addScore(score)
     },
 
