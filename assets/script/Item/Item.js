@@ -79,8 +79,10 @@ cc.Class({
      * 移动方法
      * @param {*} dt 时间间隔
      * @param {*} vy 飞船时间间隔
+     * @param {*} rocketX 火箭的x坐标
      */
-    Move(dt, vy){
+    Move(dt, vy, rocketX){
+        // 不重写则默认自然向下
         this.node.y -= vy *dt
     }
 });
