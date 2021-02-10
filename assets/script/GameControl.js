@@ -74,7 +74,7 @@ cc.Class({
         // 移动所有item
         let vy = this.rocket.Vy()
         this.ItemList.forEach(element => {
-            element.Move(dt, vy, this.rocket.node.x)
+            element.Move(dt, vy, this.rocket.node)
         });
 
         for (let i = this.ItemList.length - 1; i > -1; i--) {
