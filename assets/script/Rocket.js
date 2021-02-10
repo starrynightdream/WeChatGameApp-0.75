@@ -49,7 +49,7 @@ cc.Class({
 
         k:{
             default:1,
-            type:cc.Number,
+            type:cc.Float,
             tooltip:"滑动的接收灵敏度，最好介于0-1",
         }
     },
