@@ -46,6 +46,12 @@ cc.Class({
             type: cc.Node,
             tooltip:"游戏控制器的节点"
         },
+
+        k:{
+            default:1,
+            type:cc.Number,
+            tooltip:"滑动的接收灵敏度，最好介于0-1",
+        }
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -80,6 +86,9 @@ cc.Class({
             this.gameControl.GameOver()
             this.active = false
         }
+
+        if (this.alive)
+            this.angle -= (this.controlBar.bar.progress - 0.5) *0.05 * this.k;
 
         // 对应反映火箭状态
         this.node.angle = ((this.angle *180 /Math.PI) -90);
@@ -201,7 +210,7 @@ cc.Class({
      * @param {*} slider 拖动条
      */
     setAng(slider){
-        if (this.alive)
-            this.angle -= (slider.progress - 0.5) *0.05;
+        // if (this.alive)
+        //     this.angle -= (slider.progress - 0.5) *0.05;
     },
 });
