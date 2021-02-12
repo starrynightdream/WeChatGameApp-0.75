@@ -12,10 +12,11 @@
  * 游戏控制类
  */
 
-var Rocket = require('Rocket')
-var Item = require("Item")
-var UIControl = require("UIControl")
-var Score = require("Score")
+const Rocket = require('Rocket')
+const Item = require("Item")
+const UIControl = require("UIControl")
+const Score = require("Score")
+const Cloud = require("Cloud")
 
 cc.Class({
     extends: cc.Component,
@@ -37,7 +38,7 @@ cc.Class({
         // 乌云
         cloud: {
             default: null,
-            type: cc.Node,
+            type: Cloud,
             tooltip: "乌云"
         },
         // ui控制器
@@ -52,6 +53,7 @@ cc.Class({
             tooltip: "容器节点",
         },
         // 记录所有预制体
+        // 需要在之后变更为在指定文件夹中动态加载物件
         ItemTypeList: {
             default: [],
             type: cc.Prefab,
@@ -97,10 +99,13 @@ cc.Class({
     GameOver: function () {
         this.ItemList.forEach(element => {
             element.destroyItem()
-        })
-        this.ItemList.splice(0)
-        this.UIControl.GameOver()
-        this.score.reSetScore()
+        });
+        this.ItemList.splice(0);
+        this.UIControl.GameOver();
+        this.score.reSetScore();
+        this.cloud.reSetCloud();
+
+        return this;
     },
 
     /**
@@ -110,6 +115,7 @@ cc.Class({
         this.rocket.reSetRocket()
         this.UIControl.GameStart()
         this.score.start(1)
+        return this;
     },
 
     /**
@@ -117,6 +123,8 @@ cc.Class({
      */
     GameWait: function () {
         this.UIControl.GameWait()
+        
+        return this;
     },
 
     /**
@@ -125,6 +133,7 @@ cc.Class({
      */
     addScore (score) {
         this.score.addScore(score)
+        return this;
     },
 
     /**
@@ -135,13 +144,14 @@ cc.Class({
         // 位置种子
         const seed = Math.random() * this.width - this.width / 2
         // 第几个障碍
-        let code = Math.floor(Math.random() * 100) % (this.ItemTypeList.length)
+        let code = Math.floor(Math.random() * 100) % (this.ItemTypeList.length-2) +2;
 
         let item = cc.instantiate(this.ItemTypeList[code])
         var itemScr = item.getComponent("Item")
         itemScr.createItem(seed)
         this.Canvas.addChild(item)
         this.ItemList[this.ItemList.length] = itemScr
+        return this;
     },
 
     /**
@@ -149,6 +159,8 @@ cc.Class({
      * @param {number} k 污染指数
      */
     pollute(k) {
+        this.cloud.pollute(k);
+        return this;
     },
 
     /**
@@ -158,6 +170,7 @@ cc.Class({
     callEvent(type) {
         // 各类事件具体处理逻辑填写在此处
         ;
+        return this;
     },
 
     /**
@@ -166,5 +179,6 @@ cc.Class({
      */
     info: function (info) {
         this.UIControl.info(info)
+        return this;
     }
 });

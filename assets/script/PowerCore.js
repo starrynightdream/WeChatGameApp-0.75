@@ -48,7 +48,7 @@ cc.Class({
             }
             ans[i] *= this.eClearList[p]
         }
-        return ans
+        return ans;
     },
 
     /**
@@ -94,5 +94,12 @@ cc.Class({
             }
         }
         return wast<=0
-    }
+    },
+
+    /**
+     * 当前使用的能源是否为清洁能源
+     */
+    isClear() {
+        return this.eClearList[ this.index] == 1;
+    },
 });

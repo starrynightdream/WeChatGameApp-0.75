@@ -32,7 +32,10 @@ cc.Class({
 
     getItem: function(rocket){
         rocket.addE(false, this.E)
-        this.dead = true
+        this.dead = true;
+    },
+
+    setGame (GC){
     },
 
     checkDead: function(){

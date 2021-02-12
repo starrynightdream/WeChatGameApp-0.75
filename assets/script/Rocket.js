@@ -87,6 +87,12 @@ cc.Class({
             this.active = false
         }
 
+        // 反映污染
+        if (oil !== 0 && !this.powerCore.isClear()){
+            // 此处的污染速度值，定为5，应当通过电池或者设置更为合理的数字
+            this.gameControl.pollute(5 * dt);
+        }
+
         if (this.alive)
             this.angle -= (this.controlBar.bar.progress - 0.5) *0.05 * this.k;
 
@@ -207,6 +213,7 @@ cc.Class({
 
     /**
      * 通过拖动条变更方向
+     * 弃用
      * @param {*} slider 拖动条
      */
     setAng(slider){
