@@ -14,7 +14,7 @@
   {
     "__type__": "cc.Node",
     "_name": "rocketItem",
-    "_objFlags": 512,
+    "_objFlags": 0,
     "_parent": null,
     "_children": [
       {
@@ -182,7 +182,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "ad5b34c4-9af6-4cdf-bb0f-1e72ef1f3353"
     },
     "fileId": "858+1KkVxM7K7BNdGIOeaZ",
     "sync": false
@@ -360,7 +360,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "ad5b34c4-9af6-4cdf-bb0f-1e72ef1f3353"
     },
     "fileId": "a0bPOhGqxLjodoazJRWKI2",
     "sync": false
@@ -390,7 +390,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "ad5b34c4-9af6-4cdf-bb0f-1e72ef1f3353"
     },
     "fileId": "",
     "sync": false
