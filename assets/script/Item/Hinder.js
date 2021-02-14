@@ -1,7 +1,7 @@
 var Item = require("Item")
 
 cc.Class({
-    extends: cc.Component,
+    extends: Item,
 
     /**
      * startPos 障碍物生成位置
