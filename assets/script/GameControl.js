@@ -59,6 +59,14 @@ cc.Class({
             type: cc.Prefab,
             tooltip: "提供预制体让其生成"
         },
+
+        // 测试逻辑，需在发布前删除
+        ItemTestList: {
+            default: [],
+            type: cc.Prefab,
+            tooltip: "需要测试的物件连接到此处，游戏开始时会进行生成"
+        }
+        // 测试逻辑部分终止
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -86,7 +94,7 @@ cc.Class({
                 this.ItemList.splice(i, i + 1)
             }
         }
-        // 判断是否生成新关卡
+        // 判断是否生成新关卡，逻辑需要变更
         if (this.ItemList.length == 0) {
             this.createLevel()
         }
@@ -115,6 +123,13 @@ cc.Class({
         this.rocket.reSetRocket()
         this.UIControl.GameStart()
         this.score.start(1)
+
+        // 测试逻辑
+        this.ItemTestList.forEach(element =>{
+            
+            this.createItemForLevel(element);
+        });
+        // 测试逻辑部分终止
         return this;
     },
 
@@ -140,17 +155,29 @@ cc.Class({
      * 创建各类道具，形成关卡
      */
     createLevel() {
-        // 具体逻辑需要变更
-        // 位置种子
-        const seed = Math.random() * this.width - this.width / 2
+        // 具体逻辑需要变更，如添加数个物件的逻辑等
         // 第几个障碍
         let code = Math.floor(Math.random() * 100) % (this.ItemTypeList.length-2) +2;
 
-        let item = cc.instantiate(this.ItemTypeList[code])
-        var itemScr = item.getComponent("Item")
-        itemScr.createItem(seed)
-        this.Canvas.addChild(item)
-        this.ItemList[this.ItemList.length] = itemScr
+        this.createItemForLevel(this.ItemTypeList[code]);
+        return this;
+    },
+
+    /**
+     * 创建一个物体并加入管理器中
+     * @param {cc.Prefab} preform 需要生成物件的预制体
+     */
+    createItemForLevel (preform) {
+        // 位置种子
+        const seed = Math.random() * this.width - this.width / 2;
+
+        const item = cc.instantiate(preform);
+        let itemSpt = item.getComponent("Item");
+
+        itemSpt.createItem(seed, this.rocket);
+        this.Canvas.addChild(item);
+        this.ItemList.push(itemSpt);
+
         return this;
     },
 
@@ -169,16 +196,16 @@ cc.Class({
      */
     callEvent(type) {
         // 各类事件具体处理逻辑填写在此处
-        ;
         return this;
     },
 
     /**
      * 通过UI显示信息
-     * @param {*} info 需要显示的信息
+     * @param {string} info 需要显示的信息
+     * @param {Number} type 显示信息的类型
      */
     info: function (info) {
-        this.UIControl.info(info)
+        this.UIControl.info(info, type);
         return this;
     }
 });

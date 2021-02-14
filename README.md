@@ -27,6 +27,7 @@ script为脚本文件夹，其中
 
     UI文件夹放置继承自UI.js的文件
 
+关于测试脚本，在gameControl内有itemTestList，在其中的物件在游戏开始时会被创建，可以用于测试
 
 ## 组件 ##
 - 物件类

@@ -61,14 +61,15 @@ cc.Class({
     },
 
     GameWait:function(){
-        ;
     },
 
     /**
      * 显示信息
-     * @param {string} info 
+     * @param {string} info 信息内容
+     * @param {Number} type 消息类型
      */
     showInfo:function(info){
+        // 此处需要实现根据不同类型的信息，调用不同组件进行显示
         this.InfoTip.info(info)
     },
 });
