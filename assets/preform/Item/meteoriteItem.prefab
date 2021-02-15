@@ -13,8 +13,8 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "meteorite",
-    "_objFlags": 0,
+    "_name": "meteoriteItem",
+    "_objFlags": 512,
     "_parent": null,
     "_children": [
       {
@@ -61,8 +61,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        258.931,
-        723.44,
+        -275.146,
+        729.003,
         0,
         0,
         0,
@@ -571,7 +571,7 @@
     "_id": ""
   },
   {
-    "__type__": "25fd5SsmhxJHKBvBdhsG5eJ",
+    "__type__": "404f7z/q41OSIo8WC8NyPUb",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -589,8 +589,12 @@
       "y": 0
     },
     "rocket": null,
-    "angle": null,
-    "speed": null,
+    "angle": 0,
+    "speed": 0,
+    "bias": 0,
+    "amplitude": 0,
+    "angularVelocity": 0,
+    "phase": 0,
     "_id": ""
   },
   {
