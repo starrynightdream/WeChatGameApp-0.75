@@ -44,8 +44,8 @@ cc.Class({
         
     },
 
-    Move:function(dt,vx,vy){
-        this.node.y -= vy*dt
+    Move:function(dt,vy,rocketNode){
+        this.node.y -= this.vy*dt
 
     },
 

@@ -26,8 +26,6 @@ cc.Class({
         this.createItem(cc.v2(-400,400))
     },
 
-    start () {
-    },
 
     createItem:function(xp,rocket,param){
         this._super(xp,rocket,param)
@@ -38,23 +36,18 @@ cc.Class({
      *@param speed [cc.Float]设置ufo移动速度
      */
     setMoveLogic(){
-              
         //设置ufo速度
         this.vx=this.speed
     },
 
-    Move:function(dt,vx,vy){
-        this.node.x += vx*dt
+    Move:function(dt,vy,rocketNode){
+        this.node.x += this.vx*dt
         this.node.y = (this.amplitude*Math.sin((this.speed+this.bias)*this.angularVelocity+this.phase)+this.startPos.y)
         this.bias+=this.speed
-        
     },
 
     update (dt) {
        this.Move(dt,this.vx,this.vy)
     },
 
-    checkDead: function(){
-        return this.node.y <-1220
-    },
 });

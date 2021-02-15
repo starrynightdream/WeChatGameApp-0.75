@@ -24,8 +24,6 @@ cc.Class({
         this.createItem(cc.v2(Math.random()*viewSize.width-viewSize.width/2,-100+viewSize.height/2))
     },
 
-    start () {
-    },
 
     createItem(xp, rocket,param){
         this._super(xp, rocket,param)
@@ -46,16 +44,12 @@ cc.Class({
         this.vy=this.speed*Math.sin(this.degree)
     },
 
-    Move:function(dt,vx,vy){
-        this.node.x -= vx *dt
-        this.node.y -= vy *dt
+    Move:function(dt,vy,rocketNode){
+        this.node.x -= this.vx *dt
+        this.node.y -= this.vy *dt
     },
 
     update (dt) {
        this.Move(dt,this.vx,this.vy)
-    },
-
-    checkDead: function(){
-        return this.node.y <-1220
     },
 });
