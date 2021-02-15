@@ -18,6 +18,7 @@ const UIControl = require("UIControl")
 const Score = require("Score")
 const Cloud = require("Cloud")
 
+const util = require("util")
 cc.Class({
     extends: cc.Component,
 
@@ -174,7 +175,7 @@ cc.Class({
         const item = cc.instantiate(preform);
         let itemSpt = item.getComponent("Item");
 
-        itemSpt.createItem(seed, this.rocket);
+        itemSpt.createItem(seed, this.rocket, util.moveLogicParam());
         this.Canvas.addChild(item);
         this.ItemList.push(itemSpt);
 

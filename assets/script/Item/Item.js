@@ -46,8 +46,9 @@ cc.Class({
      * 
      * @param {Number} xp 一个 -屏幕宽度/2 到 屏幕宽度/2 的数据，用于初始化物件位置
      * @param {Object} rocket 火箭，通过这个获取火箭数据从而初始化物件
+     * @param {Object} param 一个通过全局工具类生成的对象，用于初始化障碍运动逻辑
      */
-    createItem (xp, rocket){
+    createItem (xp, rocket, param){
     },
 
     /**
