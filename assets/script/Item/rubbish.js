@@ -29,9 +29,6 @@ cc.Class({
         this.createItem(cc.v2(-100,600))
     },
 
-    start () {
-    },
-
     createItem(xp, rocket,param){
         this._super(xp, rocket,param)
         //设置ufo移动模式
@@ -56,7 +53,4 @@ cc.Class({
        this.Move(dt,this.vx,this.vy)
     },
 
-    checkDead: function(){
-        return this.node.y <-1220
-    },
 });
