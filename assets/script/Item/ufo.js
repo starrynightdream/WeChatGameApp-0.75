@@ -50,10 +50,6 @@ cc.Class({
         
     },
 
-    update (dt) {
-       this.Move(dt,this.vx,this.vy)
-    },
-
     checkDead: function(){
         return this.node.y <-1220
     },

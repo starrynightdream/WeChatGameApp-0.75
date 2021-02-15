@@ -40,8 +40,8 @@ cc.Class({
     },
 
     createItem (xp, rocket,param){
-        this.setPos(xp,this.rocket.position)
-        param=Item.moveLogicParam()
+        this.setPos(xp,rocket.position)
+        // param=Item.moveLogicParam()
         this.setMoveLogicParam(param)
     },
 
