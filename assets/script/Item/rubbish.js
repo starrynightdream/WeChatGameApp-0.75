@@ -23,10 +23,6 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        //获取屏幕分辨率
-        var viewSize=cc.view.getDesignResolutionSize()
-        console.log(viewSize)
-        this.createItem(cc.v2(-100,600))
     },
 
     createItem(xp, rocket,param){
@@ -47,10 +43,6 @@ cc.Class({
     Move:function(dt,vy,rocketNode){
         this.node.y -= this.vy*dt
 
-    },
-
-    update (dt) {
-       this.Move(dt,this.vx,this.vy)
     },
 
 });

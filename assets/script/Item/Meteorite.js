@@ -18,10 +18,6 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        //获取屏幕分辨率
-        var viewSize=cc.view.getDesignResolutionSize()
-        console.log(viewSize)
-        this.createItem(cc.v2(Math.random()*viewSize.width-viewSize.width/2,-100+viewSize.height/2))
     },
 
 
@@ -49,12 +45,4 @@ cc.Class({
         this.node.y -= this.vy *dt
     },
 
-<<<<<<< HEAD
-    update (dt) {
-       this.Move(dt,this.vx,this.vy)
-=======
-    checkDead: function(){
-        return this.node.y <-1220
->>>>>>> 405a2b5904585ae55026bff109b23976869ba4da
-    },
 });

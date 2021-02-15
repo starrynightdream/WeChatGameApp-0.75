@@ -21,9 +21,6 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        //获取屏幕分辨率
-        var viewSize=cc.view.getDesignResolutionSize()
-        this.createItem(cc.v2(-400,400))
     },
 
 
@@ -46,14 +43,4 @@ cc.Class({
         this.bias+=this.speed
     },
 
-<<<<<<< HEAD
-    update (dt) {
-       this.Move(dt,this.vx,this.vy)
-    },
-
-=======
-    checkDead: function(){
-        return this.node.y <-1220
-    },
->>>>>>> 405a2b5904585ae55026bff109b23976869ba4da
 });
