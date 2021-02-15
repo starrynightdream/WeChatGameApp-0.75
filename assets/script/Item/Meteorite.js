@@ -49,7 +49,12 @@ cc.Class({
         this.node.y -= this.vy *dt
     },
 
+<<<<<<< HEAD
     update (dt) {
        this.Move(dt,this.vx,this.vy)
+=======
+    checkDead: function(){
+        return this.node.y <-1220
+>>>>>>> 405a2b5904585ae55026bff109b23976869ba4da
     },
 });
