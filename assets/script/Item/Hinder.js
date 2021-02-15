@@ -1,8 +1,17 @@
 var Item = require("Item")
 
+Item.moveLogicParam=function(speed,amplitude,angularVelocity,phase){
+    param={
+        "speed":speed||1000,
+        "amplitude":amplitude||100,
+        "angularVelocity":angularVelocity||0.0001,
+        "phase":phase||0
+    }
+    return param
+}
+
 cc.Class({
     extends: Item,
-
     /**
      * startPos 障碍物生成位置
      * rocketPos 障碍物生成时火箭的位置
@@ -13,8 +22,12 @@ cc.Class({
         startPos:cc.Vec2,
         rocketPos:cc.Vec2,
         rocket:cc.Node,
-        angle:cc.Float,
-        speed:cc.Float
+        angle:0,
+        speed:cc.Float,
+        bias:0,
+        amplitude:cc.Float,
+        angularVelocity:cc.Float,
+        phase:cc.Float
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -26,8 +39,11 @@ cc.Class({
         this.width = 1080;
     },
 
-    // update (dt) {},
-
+    createItem (xp, rocket,param){
+        this.setPos(xp,this.rocket.position)
+        param=Item.moveLogicParam()
+        this.setMoveLogicParam(param)
+    },
 
     /**
      * @param {xp}  [cc.v2] 物体的初始位置
@@ -40,10 +56,20 @@ cc.Class({
         //火箭的坐标
         this.rocketPos=rocketPos
     },
-    /**设置障碍物移动模式
-    *@param speed [cc.Float]设置障碍移动速度
+    /**
+     * 设置障碍物移动模式的参数
+     * @param param移动模式参数的json对象
+     */
+    setMoveLogicParam(param){
+        this.speed=param["speed"]
+        this.amplitude=param["amplitude"]
+        this.angularVelocity=param["angularVelocity"]
+        this.phase=param["phase"]
+    },
+    /**
+     * 设置障碍物移动模式
     */
-    setMoveLogic(speed){
+    setMoveLogic(){
     },
 
     /**
@@ -58,26 +84,6 @@ cc.Class({
     },
 
 
-    /**
-     * 对游戏做什么 
-     * 实现请继承
-     * @param {GameControl} GC 游戏控制器
-     */
-    setGame (GC){
-        ;
-    },
-    
-    /**
-     * 判断是否应该摧毁的函数
-     */
 
-    /**
-     * 销毁item
-     */
-    destroyItem (){
-        if (this.node){
-            this.node.destroy();
-        }
-    },
     
 });

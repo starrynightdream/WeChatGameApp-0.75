@@ -18,8 +18,6 @@ cc.Class({
     properties: {
         
         
-        
-        
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -34,19 +32,16 @@ cc.Class({
     start () {
     },
 
-    createItem:function(xp){
-        //设置ufo初始位置,获取火箭当前位置
-        this.setPos(xp,this.rocket.position)
+    createItem(xp, rocket,param){
+        this._super(xp, rocket,param)
         //设置ufo移动模式
-        this.setMoveLogic(100)
+        this.setMoveLogic()
     },
     /**
      *@param speed [cc.Float]设置ufo移动速度
      */
-    setMoveLogic(speed){
-              
+    setMoveLogic(){
         //设置ufo速度
-        this.speed=speed
         this.vx=0
         this.vy=this.speed
         

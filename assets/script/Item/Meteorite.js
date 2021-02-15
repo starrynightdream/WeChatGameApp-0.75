@@ -27,23 +27,21 @@ cc.Class({
     start () {
     },
 
-    createItem:function(xp){
-        //设置陨石初始位置,获取火箭当前位置
-        this.setPos(xp,this.rocket.position)
+    createItem(xp, rocket,param){
+        this._super(xp, rocket,param)
         //设置陨石移动模式
-        this.setMoveLogic(500)
+        this.setMoveLogic()
     },
     /**
      *@param speed [cc.Float]设置陨石移动速度
      */
-    setMoveLogic(speed){
+    setMoveLogic(){
         //根据火箭于出生点的坐标对陨石进行旋转
         this.dir=this.rocketPos.sub(this.startPos)
         this.degree=this.dir.signAngle(cc.v2(1,0))
         this.angle=cc.misc.radiansToDegrees(this.degree)
         this.node.rotation=-90+this.angle
         //设置火箭速度，火箭在x，y方向移动的速度
-        this.speed=speed
         this.vx=-this.speed*Math.cos(this.degree)
         this.vy=this.speed*Math.sin(this.degree)
     },

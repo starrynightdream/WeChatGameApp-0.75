@@ -16,10 +16,6 @@ cc.Class({
      * phase:用于记录初相
      */
     properties: {
-        bias:0,
-        amplitude:0,
-        angularVelocity:0,
-        phase:0
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -27,33 +23,24 @@ cc.Class({
     onLoad () {
         //获取屏幕分辨率
         var viewSize=cc.view.getDesignResolutionSize()
-        console.log(viewSize)
         this.createItem(cc.v2(-400,400))
     },
 
     start () {
     },
 
-    createItem:function(xp){
-        //设置ufo初始位置,获取火箭当前位置
-        this.setPos(xp,this.rocket.position)
+    createItem:function(xp,rocket,param){
+        this._super(xp,rocket,param)
         //设置ufo移动模式
-        this.setMoveLogic(100)
+        this.setMoveLogic()
     },
     /**
      *@param speed [cc.Float]设置ufo移动速度
      */
-    setMoveLogic(speed){
+    setMoveLogic(){
               
         //设置ufo速度
-        this.speed=speed
-        this.vx=speed
-        this.amplitude=200
-        this.angularVelocity=0.0005
-        this.phase=0
-        
-        
-        
+        this.vx=this.speed
     },
 
     Move:function(dt,vx,vy){
