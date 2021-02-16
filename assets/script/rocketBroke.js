@@ -84,7 +84,7 @@ cc.Class({
             bundle.load("Rocket/flameItem", cc.Prefab, function (err, prefab) {
                 let flameItem = cc.instantiate(prefab);
                 rocketBroke.addChild(flameItem)
-                flameItem.setPosition(0,-193.168,0)
+                flameItem.setPosition(0,-185,0)
                 console.log(flameItem)
             });
         });
