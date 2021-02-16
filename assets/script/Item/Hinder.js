@@ -29,8 +29,9 @@ cc.Class({
         this.width = 1080;
     },
 
-    createItem (xp, rocket,param){
-        this.setPos(param["startPos"],this.rocket.position)
+    createItem (xp, rocket, param){
+        this.rocket = rocket
+        this.setPos(param["startPos"], this.rocket.node.position)
         param=Item.moveLogicParam()
         this.setMoveLogicParam(param)
     },
