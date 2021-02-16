@@ -1,24 +1,5 @@
 var Item = require("Item")
 
-/**
- * @param startPos [cc.v2] 障碍物生成位置
- * @param angle 障碍物的旋转角度
- * @param speed 障碍物的移动速度
- * @param amplitude 障碍物运动的振幅,只对ufo起效
- * @param angularVelocity 障碍物运动的角速度,只对ufo起效
- * @param phase 障碍物的初相,只对ufo起效
- */
-Item.moveLogicParam=function(speed,amplitude,angularVelocity,phase){
-    param={
-        "startPos":startPos||cc.v2(-500,500),
-        "speed":speed||1000,
-        "amplitude":amplitude||100,
-        "angularVelocity":angularVelocity||0.0001,
-        "phase":phase||0
-    }
-    return param
-}
-
 cc.Class({
     extends: Item,
     /**
