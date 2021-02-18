@@ -83,21 +83,21 @@ cc.Class({
     update(dt) {
 
         // 移动所有item
-        let vy = this.rocket.Vy()
+        let vy = this.rocket.Vy();
         this.ItemList.forEach(element => {
-            element.Move(dt, vy, this.rocket.node)
+            element.Move(dt, vy, this.rocket.node);
         });
 
         for (let i = this.ItemList.length - 1; i > -1; i--) {
 
             if (this.ItemList[i] && this.ItemList[i].checkDead()) {
-                this.ItemList[i].destroyItem()
-                this.ItemList.splice(i, i + 1)
+                this.ItemList[i].destroyItem();
+                this.ItemList.splice(i, i + 1);
             }
         }
         // 判断是否生成新关卡，逻辑需要变更
         if (this.ItemList.length == 0) {
-            this.createLevel()
+            this.createLevel();
         }
     },
 
@@ -127,7 +127,6 @@ cc.Class({
 
         // 测试逻辑
         this.ItemTestList.forEach(element =>{
-            
             this.createItemForLevel(element);
         });
         // 测试逻辑部分终止
@@ -173,7 +172,7 @@ cc.Class({
         const seed = Math.random() * this.width - this.width / 2;
 
         const item = cc.instantiate(preform);
-        let itemSpt = item.getComponent("Item");
+        let itemSpt = item.getComponent(Item);
 
         itemSpt.createItem(seed, this.rocket, util.moveLogicParam());
         this.Canvas.addChild(item);

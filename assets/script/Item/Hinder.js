@@ -32,7 +32,7 @@ cc.Class({
     createItem (xp, rocket, param){
         this.rocket = rocket
         this.setPos(param["startPos"], this.rocket.node.position)
-        param=Item.moveLogicParam()
+        // param=Item.moveLogicParam()
         this.setMoveLogicParam(param)
     },
 
