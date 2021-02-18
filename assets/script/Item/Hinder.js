@@ -74,6 +74,6 @@ cc.Class({
     },
 
     checkDead(){
-        return this.node.y < -1220;
+        return this.node.y < -2000||this.node.x<-2000||this.node.y > 2000||this.node.x > 2000;
     }
 });
