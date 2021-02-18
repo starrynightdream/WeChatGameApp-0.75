@@ -78,10 +78,14 @@ cc.Class({
         // 获取屏幕宽度
         this.width = 1080
         this.ItemList = []
+        this.start = false;
     },
 
     update(dt) {
 
+        if (!this.start){
+            return;
+        }
         // 移动所有item
         let vy = this.rocket.Vy();
         this.ItemList.forEach(element => {
@@ -96,7 +100,7 @@ cc.Class({
             }
         }
         // 判断是否生成新关卡，逻辑需要变更
-        if (this.ItemList.length == 0) {
+        if (this.ItemList.length < 3) {
             this.createLevel();
         }
     },
@@ -114,6 +118,8 @@ cc.Class({
         this.score.reSetScore();
         this.cloud.reSetCloud();
 
+        this.start = false;
+
         return this;
     },
 
@@ -124,6 +130,8 @@ cc.Class({
         this.rocket.reSetRocket()
         this.UIControl.GameStart()
         this.score.start(1)
+        
+        this.start = true;
 
         // 测试逻辑
         this.ItemTestList.forEach(element =>{
@@ -157,7 +165,7 @@ cc.Class({
     createLevel() {
         // 具体逻辑需要变更，如添加数个物件的逻辑等
         // 第几个障碍
-        let code = Math.floor(Math.random() * 100) % (this.ItemTypeList.length-2) +2;
+        let code = Math.floor(Math.random() * 100) % (this.ItemTypeList.length);
 
         this.createItemForLevel(this.ItemTypeList[code]);
         return this;

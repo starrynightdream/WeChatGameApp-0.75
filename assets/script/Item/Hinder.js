@@ -72,4 +72,8 @@ cc.Class({
     getRocketPosition(){
         return getItem().position
     },
+
+    checkDead(){
+        return this.node.y < -1220;
+    }
 });
