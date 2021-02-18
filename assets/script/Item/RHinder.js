@@ -35,6 +35,7 @@ cc.Class({
     },
     
     getItem: function(rocket){
+        // 碰撞到火箭时使火箭消亡
         rocket.death()
     },
     
