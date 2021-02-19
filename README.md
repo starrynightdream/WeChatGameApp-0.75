@@ -100,3 +100,72 @@ script为脚本文件夹，其中
     + 排行榜
         - 有这个接口，在游戏初始做好之后增量开发
     + 滑动过快会使能耗上升。
+
+## 对Item接口使用的解释 ##
+createItem (xp, rocket, param)
+
+    创建一个物件。在加入场景前被调用
+
+    实现示例：
+
+    this.node.x = xp; // 初始化物件出现的x位置
+
+getItem(rocket);
+    
+    在碰撞时由火箭调用，参数(rocket)为火箭的rocket.js脚本引用.
+    可以由此调用火箭的接口，实现实例：
+
+    rocket.death(); // 实现在碰撞时使火箭死亡
+                    // 需要实现碰撞死亡不要调用GameOver
+    rocket.setEngType(); // 设置引擎类型
+    rocket.getE(); // 获取能量槽填充情况
+
+setGame(GC):
+
+    在碰撞时由火箭调用，参数(GC)为游戏控制器的GameControl.js脚本引用
+    可以由此调用游戏控制器接口，使用实例：
+
+    GC.addScore(100);   // 为游戏加100分
+    GC.pollute(1);      // 进行污染，指数为1
+    GC.info("风能源");  // 在UI上显示信息
+
+checkDead():
+
+    判断是否死亡，返回true是确认死亡
+
+    使用实例：
+
+    return this.node.y < 1200; // 高度小于1200 时判断应销毁
+    return this.isDead; // 使用自设定的属性控制销毁
+
+Move(dt, vy, rocketNode)
+
+    移动的函数，定义物件的移动方式
+    使用实例：
+
+    this.node.y -= vy * dt; // 模拟相对火箭上升静止
+
+## rocket.js接口解释 ##
+V() Vx() Vy()
+
+    获取速度（大小，x方向，y方向）
+    
+setV()
+
+    设置速度大小
+
+death ()
+
+    火箭死亡
+
+setEng (type, E)
+
+    设置发动机。
+
+addE (type, E)
+
+    添加能量
+
+getE()
+
+    获取能量的填充

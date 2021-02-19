@@ -88,19 +88,21 @@ cc.Class({
         }
         // 移动所有item
         let vy = this.rocket.Vy();
+
         this.ItemList.forEach(element => {
             element.Move(dt, vy, this.rocket.node);
         });
 
+        // 物件是否需要销毁
         for (let i = this.ItemList.length - 1; i > -1; i--) {
 
-            if (this.ItemList[i] && this.ItemList[i].checkDead()) {
+            if (this.ItemList[i].checkDead()) {
                 this.ItemList[i].destroyItem();
                 this.ItemList.splice(i, i + 1);
             }
         }
         // 判断是否生成新关卡，逻辑需要变更
-        if (this.ItemList.length < 3) {
+        if (this.ItemList.length < 30) {
             this.createLevel();
         }
     },
@@ -109,7 +111,7 @@ cc.Class({
     /**
      * 游戏结束
      */
-    GameOver: function () {
+    GameOver () {
         this.ItemList.forEach(element => {
             element.destroyItem()
         });
@@ -126,7 +128,7 @@ cc.Class({
     /**
      * 游戏开始
      */
-    GameStart: function () {
+    GameStart () {
         this.rocket.reSetRocket()
         this.UIControl.GameStart()
         this.score.start(1)
@@ -144,7 +146,7 @@ cc.Class({
     /**
      * 游戏等待开始
      */
-    GameWait: function () {
+    GameWait () {
         this.UIControl.GameWait()
         
         return this;
@@ -212,7 +214,7 @@ cc.Class({
      * @param {string} info 需要显示的信息
      * @param {Number} type 显示信息的类型
      */
-    info: function (info) {
+    info (info) {
         this.UIControl.info(info, type);
         return this;
     }

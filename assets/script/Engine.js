@@ -29,8 +29,10 @@ cc.Class({
 
     /**
      * 初始化发动机
+     * 
+     * @param E 初始化的能量
      */
-    reSetEng: function(){
+    reSetEng: function(E = 10){
         this.type = 0
         this.E = 10
     },
