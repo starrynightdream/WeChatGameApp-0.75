@@ -345,7 +345,7 @@
   {
     "__type__": "cc.Node",
     "_name": "MainRocket",
-    "_objFlags": 512,
+    "_objFlags": 0,
     "_parent": {
       "__id__": 2
     },
@@ -387,14 +387,14 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -546.4730224609375,
+        -687.835,
         0,
         0,
         0,
         0,
         1,
-        0.4,
-        0.4,
+        0.3,
+        0.3,
         1
       ]
     },
@@ -1104,10 +1104,10 @@
         "__uuid__": "7bbfbca3-fd53-4abe-ad06-5af3b612da81"
       },
       {
-        "__uuid__": "7bbfbca3-fd53-4abe-ad06-5af3b612da81"
+        "__uuid__": "ae4ae590-d29c-4d06-8a05-4b6f5548a1cb"
       },
       {
-        "__uuid__": "7bbfbca3-fd53-4abe-ad06-5af3b612da81"
+        "__uuid__": "8efaf381-b79b-4ad1-b928-a2389b42d268"
       }
     ],
     "ItemTestList": [
