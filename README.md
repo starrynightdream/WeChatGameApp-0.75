@@ -169,3 +169,20 @@ addE (type, E)
 getE()
 
     获取能量的填充
+
+## GameControl.js 接口说明 ##
+addScore(score)
+
+    为本局游戏加分
+
+pollute(k)
+
+    污染环境
+
+callEvent(code)
+
+    调用事件
+
+info(message)
+
+    提示信息
