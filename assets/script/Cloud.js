@@ -68,6 +68,10 @@ cc.Class({
         this.cloudStop();
         // 污染时乌云移动的距离
         this.K = this.move / 500;
+
+        // 重置云层位置
+        this.childCloud.y = 0;
+        this.node.y = thi.startLine;
         
         return this;
     },

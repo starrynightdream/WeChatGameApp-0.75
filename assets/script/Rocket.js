@@ -120,7 +120,7 @@ cc.Class({
     // 接口
 
     /**
-     * 游戏开始的火箭设定
+     * 使火箭回到游戏最开始的时候 
      */
     reSetRocket (){
         this.engine.reSetEng();
@@ -129,8 +129,14 @@ cc.Class({
 
         this.speed = 20;
         this.alive = true;
-        this.active = true;
         this.wast = 0;
+    },
+
+    /**
+     * 进入游戏状态
+     */
+    intoGame(){
+        this.active = true;
     },
 
     /**

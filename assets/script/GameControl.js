@@ -17,6 +17,7 @@ const Item = require("Item")
 const UIControl = require("UIControl")
 const Score = require("Score")
 const Cloud = require("Cloud")
+const BackGround = require("BackGround");
 
 const util = require("util")
 cc.Class({
@@ -41,6 +42,11 @@ cc.Class({
             default: null,
             type: Cloud,
             tooltip: "乌云"
+        },
+        backGround: {
+            default: null,
+            type: BackGround,
+            tooltip: "背景的图片",
         },
         // ui控制器
         UIControl: {
@@ -110,6 +116,8 @@ cc.Class({
 
     /**
      * 游戏结束
+     * 
+     * 此时分数进入总结
      */
     GameOver () {
 
@@ -117,9 +125,12 @@ cc.Class({
             element.destroyItem()
         });
         this.ItemList.splice(0);
+
         this.UIControl.GameOver();
-        this.score.reSetScore();
         this.cloud.reSetCloud();
+        this.score.reSetScore();
+        this.rocket.reSetRocket();
+        this.backGround.reSetBackGround();
 
         this.start = false;
 
@@ -128,11 +139,14 @@ cc.Class({
 
     /**
      * 游戏开始
+     * 
+     * 此时游戏正式开始进入循环，移动物件，计算油耗得分。
      */
     GameStart () {
-        this.rocket.reSetRocket()
-        this.UIControl.GameStart()
-        this.score.start(1)
+        this.UIControl.GameStart();
+        this.score.intoGame(1);
+        this.rocket.intoGame();
+        
         
         this.start = true;
 
@@ -146,9 +160,10 @@ cc.Class({
 
     /**
      * 游戏等待开始
+     * 
      */
     GameWait () {
-        this.UIControl.GameWait()
+        this.UIControl.GameWait();
         
         return this;
     },
@@ -158,7 +173,7 @@ cc.Class({
      * @param {number} score 添加多少分数
      */
     addScore (score) {
-        this.score.addScore(score)
+        this.score.addScore(score);
         return this;
     },
 

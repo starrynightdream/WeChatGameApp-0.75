@@ -21,73 +21,78 @@ cc.Class({
     // onLoad () {},
 
     start () {
-        this.reSetScore()
+        this.reSetScore();
     },
 
     update (dt) {
         if (this.active){
-            this.time += dt
+            this.time += dt;
             if (this.time > 1){ 
                 //每秒更新
-                this.time = 0
-                this.score += this.autoAdd
+                this.time = 0;
+                this.score += this.autoAdd;
             }
 
             // 更新表示
-            this.show.string = this.toStr()
+            this.show.string = this.toStr();
         }
     },
 
     /**
      * 初始化计分板
      */
-    reSetScore:function(){
-        this.score = 0
-        this.autoAdd = 0
-        this.time = 0
-        this.active = false
+    reSetScore (){
+        this.score = 0;
+        this.autoAdd = 0;
+        this.time = 0;
+        this.active = false;
+
+        return this;
     },
 
     /**
      * 直接加分
      * @param {*} score 加的分数
      */
-    addScore:function(score){
-        this.score += score
+    addScore (score){
+        this.score += score;
+        return this;
     },
 
     /**
      * 开始计分
      * @param {*} k 自动增长速度
      */
-    start:function(k){
-        this.active = true
-        this.time = 0
-        this.autoAdd = k
+    intoGame (k){
+        this.active = true;
+        this.time = 0;
+        this.autoAdd = k;
+        return this;
     },
 
     /**
      * 停止操作
      */
-    stop:function(){
-        this.active = false
+    stop (){
+        this.active = false;
+        return this;
     },
 
     /**
      * 设置或查询分数增长
      * @param {*} k 每秒分数增长，可为空
      */
-    scorePerSecond:function(k){
+    scorePerSecond (k){
         if (k){
-            this.autoAdd = k
+            this.autoAdd = k;
         }
-        return this.autoAdd
+        return this.autoAdd;
     },
 
     /**
      * 分数显示
      */
     toStr:function(){
-        return Math.round(this.score)
+        return Math.round(this.score);
     },
 });
