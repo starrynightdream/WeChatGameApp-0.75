@@ -12,14 +12,13 @@
  * 游戏控制类
  */
 
-const Rocket = require('Rocket')
-const Item = require("Item")
-const UIControl = require("UIControl")
-const Score = require("Score")
-const Cloud = require("Cloud")
-const BackGround = require("BackGround");
+const Rocket = require('Rocket');
+const Item = require("Item");
+const UIControl = require("UIControl");
+const Score = require("Score");
+const Cloud = require("Cloud");
 
-const util = require("util")
+const util = require("util");
 cc.Class({
     extends: cc.Component,
 
@@ -42,11 +41,6 @@ cc.Class({
             default: null,
             type: Cloud,
             tooltip: "乌云"
-        },
-        backGround: {
-            default: null,
-            type: BackGround,
-            tooltip: "背景的图片",
         },
         // ui控制器
         UIControl: {
@@ -82,14 +76,14 @@ cc.Class({
 
     start() {
         // 获取屏幕宽度
-        this.width = 1080
-        this.ItemList = []
-        this.start = false;
+        this.width = 1080;
+        this.ItemList = [];
+        this.gameStart = false;
     },
 
     update(dt) {
 
-        if (!this.start){
+        if (!this.gameStart){
             return;
         }
         // 移动所有item
@@ -108,7 +102,7 @@ cc.Class({
             }
         }
         // 判断是否生成新关卡，逻辑需要变更
-        if (this.ItemList.length < 30) {
+        if (this.toNextLevel()) {
             this.createLevel();
         }
     },
@@ -130,9 +124,8 @@ cc.Class({
         this.cloud.reSetCloud();
         this.score.reSetScore();
         this.rocket.reSetRocket();
-        this.backGround.reSetBackGround();
 
-        this.start = false;
+        this.gameStart = false;
 
         return this;
     },
@@ -147,14 +140,14 @@ cc.Class({
         this.score.intoGame(1);
         this.rocket.intoGame();
         
-        
-        this.start = true;
+        this.gameStart = true;
 
         // 测试逻辑
         this.ItemTestList.forEach(element =>{
             this.createItemForLevel(element);
         });
         // 测试逻辑部分终止
+
         return this;
     },
 
@@ -178,6 +171,13 @@ cc.Class({
     },
 
     /**
+     * 是否进入下一关的判断
+     */
+    toNextLevel (){
+        return this.ItemList.length < 5;
+    },
+
+    /**
      * 创建各类道具，形成关卡
      */
     createLevel() {
@@ -185,22 +185,31 @@ cc.Class({
         // 第几个障碍
         let code = Math.floor(Math.random() * 100) % (this.ItemTypeList.length);
 
-        this.createItemForLevel(this.ItemTypeList[code]);
+        const itemParams = {
+            needPos : true,
+        };
+        this.createItemForLevel(this.ItemTypeList[code], itemParams);
+
         return this;
     },
 
     /**
      * 创建一个物体并加入管理器中
      * @param {cc.Prefab} preform 需要生成物件的预制体
+     * @param {Boolean} needPos 是否需要使用位置(cc.v2)初始化
      */
-    createItemForLevel (preform) {
+    createItemForLevel (preform, needPos = false) {
         // 位置种子
         const seed = Math.random() * this.width - this.width / 2;
 
         const item = cc.instantiate(preform);
         let itemSpt = item.getComponent(Item);
 
-        itemSpt.createItem(seed, this.rocket, util.moveLogicParam());
+        if (needPos){
+            itemSpt.createItem( seed, this.rocket, util.moveLogicParam( cc.v2( seed, 1200)));
+        }else{
+            itemSpt.createItem(seed, this.rocket, util.moveLogicParam());
+        }
         this.Canvas.addChild(item);
         this.ItemList.push(itemSpt);
 

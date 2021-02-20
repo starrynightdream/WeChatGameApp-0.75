@@ -21,8 +21,8 @@ cc.Class({
     // onLoad () {},
 
     start () {
-        this.type = 0
-        this.E = 0
+        this.type = 0;
+        this.E = 0;
     },
 
     // update (dt) {},
@@ -32,9 +32,11 @@ cc.Class({
      * 
      * @param E 初始化的能量
      */
-    reSetEng: function(E = 10){
-        this.type = 0
-        this.E = 10
+    reSetEng (E = 10){
+        this.type = 0;
+        this.E = 10;
+
+        return this;
     },
 
     /**
@@ -42,27 +44,31 @@ cc.Class({
      * @param {*} type 发动机类型
      * @param {*} E 发动机初始能源
      */
-    changeEng: function(type, E){
-        this.type = type
-        this.E = E
+    changeEng (type, E){
+        this.type = type;
+        this.E = E;
+
+        return this;
     },
 
     /**
      * 添加能源
-     * @param {*} e 添加的能量
+     * @param {Number} e 添加的能量
      */
-    addE: function(e){
-        this.E = Math.min(this.E + e, this.EMAX)
+    addE (e){
+        this.E = Math.min(this.E + e, this.EMAX);
+
+        return this;
     },
 
     /**
      * 使用能量
-     * @param {*} wast 使用量
+     * @param {Number} wast 使用量
      * @returns {Float} 不足的部分
      */
-    use:function(wast){
-        let dis = wast - this.E
-        this.E = Math.max(-dis, 0)
-        return Math.max(dis, 0)
-    }
+    use (wast){
+        let dis = wast - this.E;
+        this.E = Math.max(-dis, 0);
+        return Math.max(dis, 0);
+    },
 });

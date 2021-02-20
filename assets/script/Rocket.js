@@ -8,9 +8,10 @@
 //  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] https://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
 
-var PowerCore = require("PowerCore")
-var Engine = require("Engine")
-var ControlBar = require("ControlBar")
+const PowerCore = require("PowerCore");
+const Engine = require("Engine");
+const ControlBar = require("ControlBar");
+const BackGround = require("BackGround");
 
 cc.Class({
     extends: cc.Component,
@@ -40,6 +41,11 @@ cc.Class({
             type:ControlBar,
             tooltip:"控制滑动板"
         },
+        backGround:{
+            default: null,
+            type: BackGround,
+            tooltip: "用于反映高度和时间的背景" ,
+        },
 
         gameControlNode:{
             default: null,
@@ -59,18 +65,18 @@ cc.Class({
     // onLoad () {},
 
     start () {
-        var manager = cc.director.getCollisionManager()
-        manager.enabled = true
-        manager.enabledDebugDraw = true
+        const manager = cc.director.getCollisionManager();
+        manager.enabled = true;
+        manager.enabledDebugDraw = true;
 
-        this.gameControl = this.gameControlNode.getComponent("GameControl")
+        this.gameControl = this.gameControlNode.getComponent("GameControl");
 
-        this.angle = Math.PI /2
-        this.reSetRocket()
+        this.angle = Math.PI /2;
+        this.reSetRocket();
     },
 
     update (dt) {
-        if (!this.active){
+        if (!this.inGame){
             return
         }
         // this.node.y += this.Vy() *dt *this.step
@@ -130,20 +136,34 @@ cc.Class({
         this.speed = 20;
         this.alive = true;
         this.wast = 0;
+        this.inGame = false;
     },
 
     /**
-     * 进入游戏状态
+     * 调用后开始进入游戏状态
      */
-    intoGame(){
-        this.active = true;
+    intoGame (){
+        
+        // 动画播放结束后进入游戏状态
+        this.callAfterAni();
+    },
+
+    /**
+     * 在动画结束的时候调用
+     * 调用后进入开始状态
+     */
+    callAfterAni (){
+
+        // 在火箭播放完动画后背景才开始进入动画
+        this.backGround.intoGame();
+        this.inGame = true;
     },
 
     /**
      * 速度
      */
     V (){
-        return this.speed
+        return this.speed;
     },
 
     /**
@@ -178,6 +198,8 @@ cc.Class({
         this.node.x = 0
         this.angle = Math.PI /2
         this.wast = 0
+
+        this.backGround.reSetBackGround();
     },
 
     /**

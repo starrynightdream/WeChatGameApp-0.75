@@ -39,7 +39,6 @@ cc.Class({
     // onLoad () {},
 
     start () {
-        this.reSetCloud();
 
         // 开始位置
         this.startLine = this.node.y; 
@@ -47,6 +46,7 @@ cc.Class({
         if (this.node.childrenCount > 0) {
             this.childCloud = this.node.children[0];
         }
+        this.reSetCloud();
     },
 
     update (dt) {
@@ -71,7 +71,7 @@ cc.Class({
 
         // 重置云层位置
         this.childCloud.y = 0;
-        this.node.y = thi.startLine;
+        this.node.y = this.startLine;
         
         return this;
     },

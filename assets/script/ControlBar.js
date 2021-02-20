@@ -27,7 +27,7 @@ cc.Class({
     // onLoad () {},
 
     start () {
-        this.reSetConBar()
+        this.reSetConBar();
     },
 
     update (dt) {
@@ -37,22 +37,22 @@ cc.Class({
     /**
      * 重置控制器
      */
-    reSetConBar: function(){
-        this.engE = 0
-        this.pcE = []
-        this.bar.progress = 0.5
+    reSetConBar (){
+        this.engE = 0;
+        this.pcE = [];
+        this.bar.progress = 0.5;
     },
 
-    setEData: function(E, EL){
-        this.engE = E
-        this.pcE = EL
+    setEData (E, EL){
+        this.engE = E;
+        this.pcE = EL;
     },
 
-    toStr:function(){
-        let str = "E: " + Math.round(this.engE *1000)/10 + "  PC: "
+    toStr (){
+        let str = "E: " + Math.round(this.engE *1000)/10 + "  PC: ";
         this.pcE.forEach(element => {
-            str += Math.round(element *1000)/10 + ", "
+            str += Math.round(element *1000)/10 + ", ";
         });
-        return str
+        return str;
     },
 });

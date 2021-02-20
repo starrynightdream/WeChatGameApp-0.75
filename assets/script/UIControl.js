@@ -51,13 +51,11 @@ cc.Class({
     GameStart:function(){
         this.sliderBar.show()
         this.starBut.hide()
-        this.Score.show()
     },
 
     GameOver:function(){
         this.sliderBar.hide()
         this.starBut.show()
-        this.Score.hide()
     },
 
     GameWait:function(){

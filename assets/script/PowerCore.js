@@ -28,11 +28,17 @@ cc.Class({
      * 初始化能量槽
      */
     reSetPC(){
-        this.eList = [0,0,0,0,0]  // 能源槽
-        this.eMaxList = [0,0,0,0,0]  //能源槽的最大值
-        this.eClearList = [1,1,1,1,1]  //能源是否清洁
-        this.index = 0 // 使用第几个能源槽
-        this.count = 0 // 有几个能源槽非空
+
+        // 能源槽
+        this.eList = [0,0,0,0,0];  
+        //能源槽的最大值
+        this.eMaxList = [0,0,0,0,0]; 
+        //能源是否清洁
+        this.eClearList = [1,1,1,1,1];  
+        // 使用第几个能源槽
+        this.index = 0; 
+        // 有几个能源槽非空
+        this.count = 0; 
     },
 
     /**
@@ -76,7 +82,7 @@ cc.Class({
      * @param {*} wast 使用量
      * @returns {boolean} 是否足够消耗
      */
-    use:function(wast){
+    use (wast){
         if (wast <=0.0001){
             return true
         }
