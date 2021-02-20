@@ -89,9 +89,8 @@ cc.Class({
      */
     destroyItem (){
 
-        if (this.node){
+        if (cc.isValid(this.node))
             this.node.destroy();
-        }
         return this;
     },
     

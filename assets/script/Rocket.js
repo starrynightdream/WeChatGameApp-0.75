@@ -105,15 +105,16 @@ cc.Class({
 
     /**
      * 实现碰撞函数
+     * 
      * @param {*} other 
      * @param {*} self 
      */
-    onCollisionEnter: function(other, self){
-        let Item = other.getComponent("Item")
+    onCollisionEnter (other, self){
+        let Item = other.getComponent("Item");
         // 注入自身
-        Item.getItem(this)
+        Item.getItem(this);
         // 注入游戏控制器
-        Item.setGame(this.gameControl)
+        Item.setGame(this.gameControl);
     },
 
     // 接口
@@ -121,35 +122,35 @@ cc.Class({
     /**
      * 游戏开始的火箭设定
      */
-    reSetRocket: function(){
-        this.engine.reSetEng()
-        this.powerCore.reSetPC()
-        this.controlBar.reSetConBar()
+    reSetRocket (){
+        this.engine.reSetEng();
+        this.powerCore.reSetPC();
+        this.controlBar.reSetConBar();
 
-        this.speed = 20
-        this.alive = true
-        this.active = true
-        this.wast = 1
+        this.speed = 20;
+        this.alive = true;
+        this.active = true;
+        this.wast = 0;
     },
 
     /**
      * 速度
      */
-    V: function(){
+    V (){
         return this.speed
     },
 
     /**
      * 水平方向上的速度
      */
-    Vx:function (){
+    Vx (){
         return this.speed *Math.cos(this.angle) *this.step
     },
 
     /**
      * 竖直方向的速度
      */
-    Vy: function(){
+    Vy (){
         return this.speed *Math.sin(this.angle) *this.step
     },
 
@@ -157,14 +158,14 @@ cc.Class({
      * 变更速度
      * @param {*} v 变更后的速度
      */
-    setV: function(v) {
+    setV (v) {
         this.speed = v
     },
     
     /**
      * 设置火箭结束活动
      */
-    death: function() {
+    death () {
         // 届时需平滑过渡
         this.alive = false
         this.speed = 0
@@ -178,7 +179,7 @@ cc.Class({
      * @param {Number} type 发动机的代号
      * @param {Float} E 发动机中的能量
      */
-    setEng: function(type, E){
+    setEng (type, E){
         this.engine.changeEng(type, E)
     },
 
@@ -187,7 +188,7 @@ cc.Class({
      * @param {*} type 能量是否清洁
      * @param {*} E 能量大小
      */
-    addE: function(type, E) {
+    addE (type, E) {
         this.powerCore.addE(type, E, E)
     },
     /**

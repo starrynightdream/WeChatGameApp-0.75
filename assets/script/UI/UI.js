@@ -25,24 +25,25 @@ cc.Class({
     /**
      * ui显示，默认动画为渐显
      */
-    show:function(){
-        var action = cc.fadeIn(0.5)
-        this.node.runAction(action)
+    show (){
+        cc.tween(this.node)
+            .to(0.5, {opacity:255})
+            .start();
     },
 
     /**
      * ui隐藏，默认动画为渐隐
      */
-    hide:function(){
-        var action = cc.fadeOut(0.5)
-        this.node.runAction(action)
+    hide (){
+        cc.tween(this.node)
+            .to(0.5, {opacity:0})
+            .start();
     },
 
     /**
      * 信息的显示，需要则实现
      * @param {String} info 需要显示的消息
      */
-    info:function(info){
-        ;
+    info (info){
     }
 });
