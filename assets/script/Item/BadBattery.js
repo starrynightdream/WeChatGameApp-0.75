@@ -38,7 +38,7 @@ cc.Class({
     },
 
     checkDead (){
-        return this.node.y <-700 || this.dead;
+        return this.node.y <-1200 || this.dead;
     },
 
     Move (dt ,vy){

@@ -105,6 +105,7 @@ cc.Class({
 
     /**
      * 实现碰撞函数
+     * 
      * @param {*} other 
      * @param {*} self 
      */

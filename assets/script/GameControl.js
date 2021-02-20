@@ -98,7 +98,7 @@ cc.Class({
 
             if (this.ItemList[i].checkDead()) {
                 this.ItemList[i].destroyItem();
-                this.ItemList.splice(i, i + 1);
+                this.ItemList.splice(i, 1);
             }
         }
         // 判断是否生成新关卡，逻辑需要变更
@@ -112,6 +112,7 @@ cc.Class({
      * 游戏结束
      */
     GameOver () {
+
         this.ItemList.forEach(element => {
             element.destroyItem()
         });
