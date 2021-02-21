@@ -79,6 +79,37 @@ cc.Class({
         this.width = 1080;
         this.ItemList = [];
         this.gameStart = false;
+
+        // 所有允许被初始化的物件设定
+        // 电池类型
+        this.batteryType = [
+            {
+                itemName : 'BadBattery',
+                p : 1,
+            },
+            {
+                itemName : 'GoodBattery',
+                p : 2,
+            },
+        ];
+
+        this.hinderType = [
+            {
+                itemName : 'meteoriteItem',
+                p : 1,
+            },
+            {
+                itemName : 'rubbishItem',
+                p : 3,
+            }
+        ];
+        cc.assetManager.loadBundle('preform', (err, bundle) =>{
+            
+            if (err) throw err;
+            else {
+                this.bundle = bundle;
+            }
+        });
     },
 
     update(dt) {
