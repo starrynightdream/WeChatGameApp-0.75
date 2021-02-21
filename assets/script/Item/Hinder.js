@@ -67,13 +67,16 @@ cc.Class({
      * @param {Rocket} rocket 火箭类
      */
     getItem (rocket){
-        return rocket;
+        rocket.death();
+        this.death = true;
+
+        return this;
     },
     getRocketPosition(){
-        return getItem().position
+        // return getItem().position
     },
 
     checkDead(){
-        return this.node.y < -2000||this.node.x<-2000||this.node.y > 2000||this.node.x > 2000;
+        return this.node.y < -2000||this.node.x<-2000||this.node.y > 2000||this.node.x > 2000 || this.death;
     }
 });

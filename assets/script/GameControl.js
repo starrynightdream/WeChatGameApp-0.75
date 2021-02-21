@@ -80,29 +80,6 @@ cc.Class({
         this.ItemList = [];
         this.gameStart = false;
 
-        // 所有允许被初始化的物件设定
-        // 电池类型
-        this.batteryType = [
-            {
-                itemName : 'BadBattery',
-                p : 1,
-            },
-            {
-                itemName : 'GoodBattery',
-                p : 2,
-            },
-        ];
-
-        this.hinderType = [
-            {
-                itemName : 'meteoriteItem',
-                p : 1,
-            },
-            {
-                itemName : 'rubbishItem',
-                p : 3,
-            }
-        ];
         cc.assetManager.loadBundle('preform', (err, bundle) =>{
             
             if (err) throw err;
@@ -210,16 +187,23 @@ cc.Class({
 
     /**
      * 创建各类道具，形成关卡
+     * @param {number} type 指定创建物件的类型。默认0为随机
      */
-    createLevel() {
+    createLevel(type = 0) {
         // 具体逻辑需要变更，如添加数个物件的逻辑等
-        // 第几个障碍
-        let code = Math.floor(Math.random() * 100) % (this.ItemTypeList.length);
+        switch (type){
+            case 0:
+                let code = Math.floor(Math.random() * 100) % (this.ItemTypeList.length);
+                const itemParams = {
+                    needPos : true,
+                };
 
-        const itemParams = {
-            needPos : true,
-        };
-        this.createItemForLevel(this.ItemTypeList[code], itemParams);
+                this.createItemForLevel(this.ItemTypeList[code], itemParams);
+                break;
+            case 1:
+                // 电池
+        }
+        // 第几个障碍
 
         return this;
     },
