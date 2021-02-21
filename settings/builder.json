@@ -2,7 +2,10 @@
   "title": "PowerRocket",
   "packageName": "org.cocos2d.demo",
   "startScene": "4d675f61-76f6-4e4b-a8ed-b0512c2aa36c",
-  "excludeScenes": [],
+  "excludeScenes": [
+    "b502dc82-f6c1-4f39-9c62-2bf73d688f09",
+    "063a8feb-0c5e-4b86-8f9a-b2c82f73403c"
+  ],
   "orientation": {
     "landscapeLeft": true,
     "landscapeRight": true,
