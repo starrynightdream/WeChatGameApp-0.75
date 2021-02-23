@@ -29,7 +29,7 @@ cc.Class({
 
     /**
      * 事件的预警
-     * @param {string} type 事件类型
+     * @param {number} type 事件类型
      * @param {Number} xpos 参数x位置
      */
     eventWarn (type, xpos = 0) {
@@ -40,8 +40,8 @@ cc.Class({
     },
 
     /**
-     * 
-     * @param {string} type 事件类型
+     * 事件开始
+     * @param {number} type 事件类型
      */
     eventCall (type){
         switch (type){
@@ -51,8 +51,8 @@ cc.Class({
     },
 
     /**
-     * 
-     * @param {string} type 事件类型
+     * 事件借宿
+     * @param {number} type 事件类型
      */
     eventEnd (type) {
         switch (type) {
@@ -63,3 +63,6 @@ cc.Class({
 
 });
 
+module.exports.Events = {
+    'wind' : 0,
+}
