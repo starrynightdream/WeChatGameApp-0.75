@@ -10,7 +10,7 @@ cc.Class({
 
     properties: {
         windParticle:cc.ParticleSystem,
-        windBackground:cc.Node
+        background:cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -20,15 +20,19 @@ cc.Class({
     },
     //风出现的建议动画
     windEnter(){
-        this.windBackground.y=-500
-        cc.tween(this.windBackground).to(1,{y:0}).start()
+        this.background.opacity=0
+        cc.tween(this.background).to(0.6,{opacity:255}).start()
         this.windParticle.stopSystem()
         t=this.windParticle
-        setTimeout("t.resetSystem()", 3000 )
+        tb=this.background
+        setTimeout(function(){
+            t.resetSystem()
+            cc.tween(tb).to(0.6,{opacity:150}).start()
+        }, 3000)
     },
     //风消失的动画
     windLeave(){
-        cc.tween(this.windBackground).to(1,{y:-500}).start()
+        cc.tween(this.background).to(0.6,{opacity:0}).start()
         this.windParticle.stopSystem()
     }
 
