@@ -250,6 +250,13 @@ cc.Class({
     },
 
     /**
+     * 根据状态进行事件判断
+     * @param {Number} dt update 时间间隔
+     */
+    checkEvent(dt) {
+    },
+
+    /**
      * 通过UI显示信息
      * @param {string} info 需要显示的信息
      * @param {Number} type 显示信息的类型
