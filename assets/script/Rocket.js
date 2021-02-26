@@ -86,11 +86,11 @@ cc.Class({
         let oil = this.engine.use(this.wast *dt);
         let overUse = this.powerCore.use(oil);
 
-        if (!( overUse && this.alive )){
+        if (!(overUse && this.alive)){
             // 能量不足消耗
             this.death(1);
             this.gameControl.GameOver();
-            this.active = false;
+            // this.active = false;
         }
 
         // 反映污染
@@ -183,7 +183,7 @@ cc.Class({
      * @param {*} v 变更后的速度
      */
     setV (v) {
-        this.speed = v;
+        this.speed = v
     },
     
     /**

@@ -116,17 +116,26 @@ cc.Class({
 
         // 物件是否需要销毁
         for (let i = this.ItemList.length - 1; i > -1; i--) {
+            let nowItem = this.ItemList[i];
             let isDed = false;
-            if (this.ItemList[i].checkDead()) {
-                this.ItemList[i].destroyItem();
+            if (nowItem.checkDead()) {
+                nowItem.destroyItem();
                 isDed = true;
             }
 
-            if (this.ItemList[i].needAudio()){
+            if (nowItem.needAudio()){
                 // 声音
-                this.audioSys.play(this.ItemList[i].audioType());
+                this.audioSys.play(nowItem.audioType());
             }
-            
+
+            if (nowItem.needBGM()){
+                nowItem.setBGMId( this.audioSys.play( nowItem.bgmType()));
+            }
+
+            if (nowItem.needKillBGM()){
+               this.audioSys.stopPlay( nowItem.getBGMId()); 
+            }
+
             if (isDed){
                 this.ItemList.splice(i, 1);
             }

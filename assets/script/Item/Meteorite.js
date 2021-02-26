@@ -25,6 +25,9 @@ cc.Class({
         this._super(xp, rocket,param)
         //设置陨石移动模式
         this.setMoveLogic()
+
+        this.npBGM = true;
+        this.nkBGM = false;
     },
     /**
      *@param speed [cc.Float]设置陨石移动速度
@@ -45,4 +48,31 @@ cc.Class({
         this.node.y -= this.vy *dt
     },
 
+    destroyItem (){
+        this.nkBGM = true;
+        if (cc.isValid(this.node))
+            this.node.destroy();
+        return this;
+    },
+    /**
+     * 是否需要播放BGM
+     */
+    needBGM (){
+        return this.npBGM;
+    },
+    needKillBGM (){
+        return this.nkBGM;
+    },
+    bgmType (){
+        this.npBGM= false;
+        return 'burning';
+    },
+    getBGMId (){
+        this.nkBGM = false;
+        return this.BGMid;
+    },
+    setBGMId (id){
+        this.BGMid = id;
+        return this;
+    },
 });

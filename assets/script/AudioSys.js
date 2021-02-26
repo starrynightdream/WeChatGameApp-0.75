@@ -37,10 +37,9 @@ cc.Class({
                     
                     bundle.load(audioName, cc.AudioClip, (err, audio) =>{
 
-                        console.log(`in ${audioName} and err ${err}`);
                         if (err){
                             this.audioType[audioName] = undefined;
-                            console.log('err: '+ err);
+                            console.log(`err in audioSys and load aduio ${audioName} : err ${err}` );
                         }else{
                             this.audioType[audioName] = audio;
 
@@ -62,12 +61,14 @@ cc.Class({
      * 使用该接口播放音效
      * @param {string} name 音效名称
      * @param {Boolean} loop 是否循环，默认不
+     * 
+     * @returns {Number} 音频的id，若为undefine则意味为加载成功
      */
     play (name, loop = false){
         
         if (this.audioType[name]){
             // 播放
-            cc.audioEngine.playEffect(this.audioType[name], loop);
+            return cc.audioEngine.playEffect(this.audioType[name], loop);
         }else{
 
             this.bundle.load(name, cc.AudioClip, (err, audio) =>{
@@ -77,11 +78,23 @@ cc.Class({
                 }else{
                     this.audioType[name] = audio;
                     //播放
-                    cc.audioEngine.playEffect(this.audioType[name], loop);
+                    if (!loop){
+                        // 循环播放的音效需要合适的方式进行停止，因此加载中不得播放
+                        cc.audioEngine.playEffect(this.audioType[name], loop);
+                    }
                 }
             });
         }
-        return this;
+        return;
+    },
+
+    /**
+     * 停止播放循环的音效
+     * @param {Number} id 需要终止的对象
+     */
+    stopPlay(id){
+       cc.audioEngine.stop(id);
+       return this; 
     },
 
     playBGM (){

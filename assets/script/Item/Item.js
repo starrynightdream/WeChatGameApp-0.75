@@ -121,4 +121,33 @@ cc.Class({
      */
     audioType (){
     },
+
+    /**
+     * 是否需要播放BGM
+     */
+    needBGM (){
+        return false;
+    },
+    /**
+     * 是否结束播放
+     */
+    needKillBGM (){
+        return false;
+    },
+    /**
+     * 背景音乐类型
+     */
+    bgmType (){
+    },
+    /**
+     * 获取播放中BGM的id
+     */
+    getBGMId (){
+    },
+    /**
+     * 设置BGMid
+     * @param {Number} id 音频的id
+     */
+    setBGMId (id){
+    },
 });
