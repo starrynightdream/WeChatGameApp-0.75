@@ -394,7 +394,7 @@
       "array": [
         0,
         0,
-        246.81724007856502,
+        320.5268431155668,
         0,
         0,
         0,
@@ -620,8 +620,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 314,
-      "height": 469
+      "width": 350,
+      "height": 550
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -676,7 +676,7 @@
       "__uuid__": "8e5a7187-bfce-4f03-80ab-3d9516512ab8"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -787,7 +787,7 @@
       "__uuid__": "64a77471-1d74-4c9a-95aa-bc8e007876bf"
     },
     "_texture": null,
-    "_stopped": true,
+    "_stopped": false,
     "playOnLoad": true,
     "autoRemoveOnFinish": false,
     "totalParticles": 191,

@@ -189,7 +189,7 @@
       "array": [
         0,
         0,
-        327.3576026305178,
+        320.5268431155668,
         0,
         0,
         0,
@@ -930,8 +930,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 314,
-      "height": 469
+      "width": 350,
+      "height": 550
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -986,7 +986,7 @@
       "__uuid__": "8e5a7187-bfce-4f03-80ab-3d9516512ab8"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
