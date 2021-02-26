@@ -221,6 +221,18 @@ cc.Class({
     },
 
     /**
+     * 添加负面效果于耗油量
+     * @param {Number} num Wast 负面值
+     */
+    deBuffForWast (num = 0, time = 0.5) {
+
+        cc.tween(this)
+            .by(time, {wast : num})
+            .by(time, {wast : -num})
+            .start();
+    },
+
+    /**
      * 添加能量
      * @param {*} type 能量是否清洁
      * @param {*} E 能量大小
@@ -246,7 +258,7 @@ cc.Class({
      * 获取发动机能量槽
      */
     getEngE(){
-        return this.engine.E / this.engine.EMAX
+        return this.engine.E / this.engine.EMAX;
     },
 
     /**

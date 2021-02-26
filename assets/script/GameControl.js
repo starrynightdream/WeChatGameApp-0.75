@@ -18,6 +18,7 @@ const UIControl = require('UIControl');
 const Score = require('Score');
 const Cloud = require('Cloud');
 const AudioSys = require('AudioSys');
+const GameEventSys = require('GameEventSys');
 
 const util = require("util");
 cc.Class({
@@ -89,6 +90,7 @@ cc.Class({
                 this.loadList.forEach(name =>{
                     
                     bundle.load(`Item/${name}`, cc.Prefab, (err, preform) =>{
+
                         if (err){
                             this.itemType[name] = undefined;
                             console.log('err: '+err);
@@ -98,6 +100,9 @@ cc.Class({
                     });
                 });
             }
+            
+            this.gameEve = this.getComponent(GameEventSys);
+            this.gameEve.createShower(); 
         });
 
     },
@@ -145,6 +150,10 @@ cc.Class({
         if (this.toNextLevel()) {
             this.createLevel(this.levelType());
         }
+
+        if (this.checkEvent()) {
+            this.callEvent();
+        }
     },
 
 
@@ -164,6 +173,8 @@ cc.Class({
         this.cloud.reSetCloud();
         this.score.reSetScore();
         this.rocket.reSetRocket();
+
+        this.gameEve.reSetAllEve();
 
         this.gameStart = false;
 
@@ -348,18 +359,17 @@ cc.Class({
 
     /**
      * 触发函数，如太阳光、风流、拾取电池等事件发生时可调用
-     * @param {*} type 事件类型，具体另作定义
      */
-    callEvent(type) {
-        // 各类事件具体处理逻辑填写在此处
-        return this;
+    callEvent() {
+
+        this.gameEve.eventWarn('wind', 0);
     },
 
     /**
      * 根据状态进行事件判断
-     * @param {Number} dt update 时间间隔
      */
-    checkEvent(dt) {
+    checkEvent() {
+        return this.rocket.node.position.x > 10;
     },
 
     /**
