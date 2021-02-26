@@ -362,7 +362,15 @@ cc.Class({
      */
     callEvent() {
 
-        this.gameEve.eventWarn('wind', 0);
+        let eveCode = Math.floor(Math.random() * 100) %2;
+        let posCode = Math.floor(Math.random() * 2000) % this.width - this.width/2;
+        if (eveCode == 1){
+            // 太阳
+            this.gameEve.eventWarn('sun', posCode);
+        }else{
+            //风
+            this.gameEve.eventWarn('wind', posCode);
+        }
     },
 
     /**
@@ -370,7 +378,7 @@ cc.Class({
      */
     checkEvent() {
         this.gameEve.reFlesh(this.rocket);
-        return this.rocket.node.position.x > 10;
+        return Math.floor(Math.random() * 1000) % 50 < 4;
     },
 
     /**
