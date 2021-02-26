@@ -75,6 +75,9 @@ cc.Class({
     // onLoad () {},
 
     start() {
+
+        // 清除本地的缓存
+        cc.assetManager.cacheManager.clearCache();
         // 获取屏幕宽度
         this.width = 1080;
         this.ItemList = [];

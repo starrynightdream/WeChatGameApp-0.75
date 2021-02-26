@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "f7b2dea3-4146-42af-885b-394d83af251a",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1036,
+  "height": 1616,
+  "platformSettings": {},
+  "subMetas": {
+    "环保能源": {
+      "ver": "1.0.4",
+      "uuid": "4c97291e-6fd2-45e0-b4fb-437d92e27f55",
+      "rawTextureUuid": "f7b2dea3-4146-42af-885b-394d83af251a",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -16,
+      "trimX": 0,
+      "trimY": 51,
+      "width": 1036,
+      "height": 1546,
+      "rawWidth": 1036,
+      "rawHeight": 1616,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

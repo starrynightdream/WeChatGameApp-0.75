@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "e36efbc7-e252-43c7-b130-785df45cf348",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1036,
+  "height": 1616,
+  "platformSettings": {},
+  "subMetas": {
+    "煤炭能源": {
+      "ver": "1.0.4",
+      "uuid": "0c809880-8b66-4ba8-b8d6-5096b5f178dd",
+      "rawTextureUuid": "e36efbc7-e252-43c7-b130-785df45cf348",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -16,
+      "trimX": 0,
+      "trimY": 51,
+      "width": 1036,
+      "height": 1546,
+      "rawWidth": 1036,
+      "rawHeight": 1616,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
