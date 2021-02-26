@@ -77,20 +77,20 @@ cc.Class({
 
     update (dt) {
         if (!this.inGame){
-            return
+            return;
         }
         // this.node.y += this.Vy() *dt *this.step
-        this.node.x += this.Vx() *dt *this.step
+        this.node.x += this.Vx() *dt *this.step;
 
         // 计算能耗
-        let oil = this.engine.use(this.wast *dt)
-        let overUse = this.powerCore.use(oil)
+        let oil = this.engine.use(this.wast *dt);
+        let overUse = this.powerCore.use(oil);
 
-        if (!(overUse &&this.alive)){
+        if (!( overUse && this.alive )){
             // 能量不足消耗
-            this.death()
-            this.gameControl.GameOver()
-            this.active = false
+            this.death(1);
+            this.gameControl.GameOver();
+            this.active = false;
         }
 
         // 反映污染
@@ -183,19 +183,23 @@ cc.Class({
      * @param {*} v 变更后的速度
      */
     setV (v) {
-        this.speed = v
+        this.speed = v;
     },
     
     /**
      * 设置火箭结束活动
+     * @param {Number} type 死亡的类型
      */
-    death () {
+    death (type = 0) {
         // 届时需平滑过渡
         this.alive = false
         this.speed = 0
         this.node.x = 0
         this.angle = Math.PI /2
 
+        if (type == 0){
+            this.gameControl.audioSys.play('explore');
+        }
         this.backGround.reSetBackGround();
     },
 

@@ -16,13 +16,15 @@ cc.Class({
     // onLoad () {},
 
     start () {
+        this.audioType = {};
         this.loadList = [
-            'background',
             'battery',
             'burning',
             'button',
             'button2',
             'explore',
+            'ufo',
+            'background',
         ];
 
         cc.assetManager.loadBundle('audio', (err, bundle) =>{
@@ -31,19 +33,24 @@ cc.Class({
             else {
                 this.bundle = bundle;
 
-                this.loadList.forEach(name =>{
+                this.loadList.forEach(audioName =>{
                     
-                    bundle.load(name, cc.AudioClip, (err, audio) =>{
+                    bundle.load(audioName, cc.AudioClip, (err, audio) =>{
+
+                        console.log(`in ${audioName} and err ${err}`);
                         if (err){
-                            this.audioType[name] = undefined;
+                            this.audioType[audioName] = undefined;
                             console.log('err: '+ err);
                         }else{
-                            this.audioType[name] = audio;
+                            this.audioType[audioName] = audio;
+
+                            if (audioName === 'background'){
+                                this.playBGM();
+                            }
                         }
                     });
                 });
 
-                this.playBGM();
             }
         });
 
@@ -72,14 +79,38 @@ cc.Class({
                     //播放
                     cc.audioEngine.playEffect(this.audioType[name], loop);
                 }
-            })
+            });
         }
         return this;
     },
 
     playBGM (){
 
-        this.BGM = cc.audioEngine.playMusic(this.audioType['background.mp3'], true);
+        if (this.audioType.background){
+            this.BGM = cc.audioEngine.playMusic(this.audioType.background, true);
+        }else{
+
+            this.bundle.load('background', cc.AudioClip, (err, audio) =>{
+
+                if (err){
+                    console.log(`err when load background + ${err}`);
+                }else{
+
+                    this.audioType.background = audio;
+                    this.BGM = cc.audioEngine.playMusic(audio, true);
+                }
+            })
+        }
         return this;
-    }
+    },
+
+    stopBGM (){
+        cc.audioEngine.stop(this.BGM);
+        return this;
+    },
+
+    restarBGM (){
+        this.stopBGM().playBGM();
+        return this;
+    },
 });

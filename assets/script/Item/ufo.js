@@ -28,6 +28,8 @@ cc.Class({
         this._super(xp,rocket,param)
         //设置ufo移动模式
         this.setMoveLogic()
+        this.needA = true;
+        return this;
     },
     /**
      *@param speed [cc.Float]设置ufo移动速度
@@ -41,6 +43,15 @@ cc.Class({
         this.node.x += this.vx*dt
         this.node.y = (this.amplitude*Math.sin((this.speed+this.bias)*this.angularVelocity+this.phase)+this.startPos.y)
         this.bias+=this.speed
+    },
+
+    needAudio (){
+        return this.needA;
+    },
+
+    audioType (){
+        this.needA = false;
+        return 'ufo';
     },
 
 });

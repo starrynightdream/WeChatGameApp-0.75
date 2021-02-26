@@ -106,5 +106,19 @@ cc.Class({
         // 不重写则默认自然向下
         this.node.y -= vy *dt;
         return this;
-    }
+    },
+
+    /**
+     * 是否需要播放音效
+     * 默认不需要声音
+     */
+    needAudio (){
+        return false;
+    },
+
+    /**
+     * 放回需要的声音名称
+     */
+    audioType (){
+    },
 });

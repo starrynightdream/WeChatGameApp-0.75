@@ -70,6 +70,7 @@ cc.Class({
         this.ItemList = [];
         this.itemType = {};
         this.gameStart = false;
+        this.audioSys = this.getComponent(AudioSys);
 
         this.loadList = [
             'BadBattery',
@@ -115,12 +116,22 @@ cc.Class({
 
         // 物件是否需要销毁
         for (let i = this.ItemList.length - 1; i > -1; i--) {
-
+            let isDed = false;
             if (this.ItemList[i].checkDead()) {
                 this.ItemList[i].destroyItem();
+                isDed = true;
+            }
+
+            if (this.ItemList[i].needAudio()){
+                // 声音
+                this.audioSys.play(this.ItemList[i].audioType());
+            }
+            
+            if (isDed){
                 this.ItemList.splice(i, 1);
             }
         }
+
         // 判断是否生成新关卡，逻辑需要变更
         if (this.toNextLevel()) {
             this.createLevel(this.levelType());
@@ -158,8 +169,8 @@ cc.Class({
     GameStart () {
         this.UIControl.GameStart();
         this.score.intoGame(1);
-        this.rocket.setWast(1);
         this.rocket.intoGame();
+        this.rocket.setWast(1);
         
         this.gameStart = true;
 
