@@ -16,7 +16,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        this.windEnter()
+        // this.windEnter()
     },
     //风出现的建议动画
     windEnter(){
