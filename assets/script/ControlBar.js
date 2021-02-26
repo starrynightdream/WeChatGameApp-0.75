@@ -15,10 +15,13 @@ cc.Class({
             type:cc.Slider,
             tooltip:"滑动条"
         },
-        label:{
-            default:null,
-            type:cc.Label,
-            tooltip:"显示能源"
+        engShow : {
+            default: null,
+            type : cc.ProgressBar,
+        },
+        eShower : {
+            default : [],
+            type : cc.ProgressBar,
         }
     },
 
@@ -31,7 +34,10 @@ cc.Class({
     },
 
     update (dt) {
-        this.label.string = this.toStr()
+        this.engShow.progress = this.engE;
+        for (let i=0; i<5;i++){
+            this.eShower[i].progress = Math.abs(this.pcE[i]);
+        }
     },
 
     /**
