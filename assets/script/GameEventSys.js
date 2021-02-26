@@ -98,15 +98,19 @@ cc.Class({
      * @param {Rocket} rocket 火箭的引用 
      */
     reFlesh (rocket){
+        const obj = {
+            rocket,
+        };
         if (this.wind)
-            this.reFleshProcess(this.wind, rocket);
+            this.reFleshProcess(this.wind, obj);
         if (this.sun)
-            this.reFleshProcess(this.sun , rocket);
+            this.reFleshProcess(this.sun , obj);
     },
 
     reFleshProcess (eve, {rocket}) {
 
         if (eve.eventEnd()){
+
             eve.reSetEve();
         } else{
 

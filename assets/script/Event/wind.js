@@ -26,6 +26,7 @@ cc.Class({
      * @param {Number} xpos 出现的x位置
      */
     warn(xpos = 0){
+        this.node.x = xpos;
         // 是否已经结束
         this.end = false;
         // 是否正在工作
@@ -33,12 +34,12 @@ cc.Class({
         // 是否处于警告
         this.inWarn = true;
         cc.tween(this.background)
-            .to(1.5 , {opacity : 60})
-            .start()
+            .to(0.6 , {opacity : 60})
             .call(()=>{
                 this.inWork = true;
                 this.toWorkFlag = true;
-            });
+            })
+            .start();
 
         this.windParticle.stopSystem();
     },
@@ -48,14 +49,17 @@ cc.Class({
      */
     enter(){
         this.toWorkFlag = false;
+
         this.windParticle.resetSystem();
+
         cc.tween(this.background)
             .to(0.6, {opacity: 127})
-            .start()
             .call(()=>{
+                console.log('wind enter');
                 this.inWork = false;
                 this.toLeaveFlag = true;
-            });
+            })
+            .start();
     },
     
     /**
@@ -65,15 +69,16 @@ cc.Class({
         this.toLeaveFlag = false;
         cc.tween(this.background)
             .to(0.6,{opacity : 0})
-            .start()
             .call(()=>{
+                console.log('wind end');
                 this.end = true;
-            });
+            })
+            .start();
         this.windParticle.stopSystem();
     },
 
     inRange (rocketPos){
-        return Math.abs(rocketPos.x - this.x) < this.node.size.w /2;
+        return Math.abs(rocketPos.x - this.x) < this.node.w /2;
     },
 
     eventEnd(){

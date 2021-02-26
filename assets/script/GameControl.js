@@ -369,6 +369,7 @@ cc.Class({
      * 根据状态进行事件判断
      */
     checkEvent() {
+        this.gameEve.reFlesh(this.rocket);
         return this.rocket.node.position.x > 10;
     },
 
