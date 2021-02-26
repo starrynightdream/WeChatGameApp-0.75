@@ -182,7 +182,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "ad5b34c4-9af6-4cdf-bb0f-1e72ef1f3353"
+      "__uuid__": "2e933570-7fac-44f0-aa40-c30567f896d4"
     },
     "fileId": "858+1KkVxM7K7BNdGIOeaZ",
     "sync": false
@@ -274,7 +274,7 @@
       "__uuid__": "64a77471-1d74-4c9a-95aa-bc8e007876bf"
     },
     "_texture": null,
-    "_stopped": true,
+    "_stopped": false,
     "playOnLoad": true,
     "autoRemoveOnFinish": false,
     "totalParticles": 191,
@@ -360,7 +360,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "ad5b34c4-9af6-4cdf-bb0f-1e72ef1f3353"
+      "__uuid__": "2e933570-7fac-44f0-aa40-c30567f896d4"
     },
     "fileId": "a0bPOhGqxLjodoazJRWKI2",
     "sync": false
@@ -390,7 +390,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "ad5b34c4-9af6-4cdf-bb0f-1e72ef1f3353"
+      "__uuid__": "2e933570-7fac-44f0-aa40-c30567f896d4"
     },
     "fileId": "",
     "sync": false
