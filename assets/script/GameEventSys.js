@@ -26,6 +26,8 @@ cc.Class({
     },
 
     // update (dt) {},
+    createShower (){
+    },
 
     /**
      * 事件的预警
@@ -62,7 +64,3 @@ cc.Class({
     },
 
 });
-
-module.exports.Events = {
-    'wind' : 0,
-}

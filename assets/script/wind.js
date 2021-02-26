@@ -16,33 +16,42 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        // this.windEnter()
+        this.background.node.opacity = 0;
+        this.node.y = 0;
     },
-    //风出现的建议动画
-    windEnter(){
-        this.background.opacity=0
-        cc.tween(this.background).to(0.6,{opacity:255}).start()
-        this.windParticle.stopSystem()
-        t=this.windParticle
-        tb=this.background
-        setTimeout(function(){
-            t.resetSystem()
-            cc.tween(tb).to(0.6,{opacity:150}).start()
-        }, 3000)
+
+    /**
+     * 风警告
+     * @param {Number} xpos 出现的x位置
+     */
+    windWarn(xpos = 0){
+
+        cc.tween(this.background)
+            .to(0.6, {opacity : 60})
+            .start();
+
+        this.windParticle.stopSystem();
     },
-    //风消失的动画
+
+    /**
+     * 风进入
+     */
+    windnter (){
+        this.windParticle.resetSystem();
+        cc.tween(this.background)
+            .to(0.6, {opacity: 127})
+            .start();
+    },
+    
+    /**
+     * 风消失
+     */
     windLeave(){
-        cc.tween(this.background).to(0.6,{opacity:0}).start()
-        this.windParticle.stopSystem()
+        cc.tween(this.background)
+            .to(0.6,{opacity : 0})
+            .start();
+        this.windParticle.stopSystem();
     }
-
-    
-    
-    
-    
-    
-    
-
 
     // update (dt) {},
 });
