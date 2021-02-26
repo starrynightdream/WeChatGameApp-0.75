@@ -80,6 +80,8 @@ cc.Class({
             'meteoriteItem',
             'rubbishItem',
             'ufoItem',
+            'SunEng',
+            'WindEng',
         ];
         cc.assetManager.loadBundle('preform', (err, bundle) =>{
             
@@ -227,7 +229,7 @@ cc.Class({
      * 创建何种类型的关卡
      */
     levelType (){
-        let levelCode = Math.floor(Math.random() * 100) % 3;
+        let levelCode = Math.floor(Math.random() * 100) % 4;
         return Math.max(levelCode -1, 0);
     },
 
@@ -284,6 +286,26 @@ cc.Class({
                         this.createItemByName('GoodBattery', batteryParams);
                         break;
                }
+               break;
+            case 2:
+                // 引擎
+                let engCode = Math.floor(Math.random() * 100) % 2 +1;
+                const engParams = {
+                    needPos : true,
+                };
+
+                switch(engCode){
+                    case 1:
+                        this.createItemByName('WindEng', engParams);
+                        break;
+                    case 2:
+                        this.createItemByName('SunEng', engParams);
+                        break;
+                    default:
+                }
+                break;
+            default:
+
         }
         // 第几个障碍
 

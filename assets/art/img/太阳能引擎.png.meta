@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "87501d98-8381-42d2-b612-c6c7a793445c",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 467,
+  "height": 364,
+  "platformSettings": {},
+  "subMetas": {
+    "太阳能引擎": {
+      "ver": "1.0.4",
+      "uuid": "7d399800-5d91-4356-82fb-e4c61cb276eb",
+      "rawTextureUuid": "87501d98-8381-42d2-b612-c6c7a793445c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 467,
+      "height": 364,
+      "rawWidth": 467,
+      "rawHeight": 364,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
