@@ -360,6 +360,7 @@ cc.Class({
         if (isUFO){
             parObj.startPos = cc.v2(-500, 400);
             parObj.phase = Math.random() *5;
+            parObj.speed = 300;
         }
         
         itemSpt.createItem(seed, this.rocket, util.moveLogicParam(parObj));
@@ -400,7 +401,7 @@ cc.Class({
      */
     checkEvent() {
         this.gameEve.reFlesh(this.rocket);
-        return Math.floor(Math.random() * 1000) % 50 < 40;
+        return Math.floor(Math.random() * 1000) % 500 < 1;
     },
 
     /**
