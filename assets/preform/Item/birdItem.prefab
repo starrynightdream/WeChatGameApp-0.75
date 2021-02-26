@@ -76,8 +76,8 @@
     "_skewX": 0,
     "_skewY": 0,
     "_is3DNode": false,
-    "_groupIndex": 0,
-    "groupIndex": 0,
+    "_groupIndex": 1,
+    "groupIndex": 1,
     "_id": ""
   },
   {
@@ -140,8 +140,8 @@
     "_skewX": 0,
     "_skewY": 0,
     "_is3DNode": false,
-    "_groupIndex": 0,
-    "groupIndex": 0,
+    "_groupIndex": 1,
+    "groupIndex": 1,
     "_id": ""
   },
   {
@@ -182,7 +182,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "cadbfe9e-723a-4cf9-8e67-52f229e5621b"
     },
     "fileId": "a9KjZywwRFgYTucaVejJJu",
     "sync": false
@@ -239,7 +239,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "cadbfe9e-723a-4cf9-8e67-52f229e5621b"
     },
     "fileId": "",
     "sync": false

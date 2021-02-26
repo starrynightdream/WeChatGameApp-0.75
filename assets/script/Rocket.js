@@ -67,7 +67,7 @@ cc.Class({
     start () {
         const manager = cc.director.getCollisionManager();
         manager.enabled = true;
-        manager.enabledDebugDraw = true;
+        // manager.enabledDebugDraw = true;
 
         this.gameControl = this.gameControlNode.getComponent("GameControl");
 
@@ -110,11 +110,10 @@ cc.Class({
     },
 
     /**
-     * 实现碰撞函数
-     * 
-     * @param {*} other 
-     * @param {*} self 
-     */
+    * 当碰撞产生的时候调用
+    * @param  {Collider} other 产生碰撞的另一个碰撞组件
+    * @param  {Collider} self  产生碰撞的自身的碰撞组件
+    */
     onCollisionEnter (other, self){
         let Item = other.getComponent("Item");
         // 注入自身
@@ -135,7 +134,6 @@ cc.Class({
 
         this.speed = 20;
         this.alive = true;
-        this.wast = 0;
         this.inGame = false;
     },
 
@@ -143,7 +141,7 @@ cc.Class({
      * 调用后开始进入游戏状态
      */
     intoGame (){
-        
+        this.controlBar.reSetConBar();
         // 动画播放结束后进入游戏状态
         this.callAfterAni();
     },
@@ -197,7 +195,6 @@ cc.Class({
         this.speed = 0
         this.node.x = 0
         this.angle = Math.PI /2
-        this.wast = 0
 
         this.backGround.reSetBackGround();
     },
@@ -209,6 +206,14 @@ cc.Class({
      */
     setEng (type, E){
         this.engine.changeEng(type, E)
+    },
+
+    /**
+     * 设置损耗
+     * @param {Number} wast 损耗
+     */
+    setWast (wast = 0){
+        this.wast = wast;
     },
 
     /**

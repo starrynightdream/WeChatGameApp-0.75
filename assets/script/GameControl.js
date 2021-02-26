@@ -54,20 +54,6 @@ cc.Class({
             tooltip: "容器节点",
         },
         // 记录所有预制体
-        // 需要在之后变更为在指定文件夹中动态加载物件
-        ItemTypeList: {
-            default: [],
-            type: cc.Prefab,
-            tooltip: "提供预制体让其生成"
-        },
-
-        // 测试逻辑，需在发布前删除
-        ItemTestList: {
-            default: [],
-            type: cc.Prefab,
-            tooltip: "需要测试的物件连接到此处，游戏开始时会进行生成"
-        }
-        // 测试逻辑部分终止
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -81,15 +67,37 @@ cc.Class({
         // 获取屏幕宽度
         this.width = 1080;
         this.ItemList = [];
+        this.itemType = {};
         this.gameStart = false;
 
+        this.loadList = [
+            'BadBattery',
+            'GoodBattery',
+            'birdItem',
+            'meteoriteItem',
+            'rubbishItem',
+            'ufoItem',
+        ];
         cc.assetManager.loadBundle('preform', (err, bundle) =>{
             
             if (err) throw err;
             else {
                 this.bundle = bundle;
+
+                this.loadList.forEach(name =>{
+                    
+                    bundle.load(`Item/${name}`, cc.Prefab, (err, preform) =>{
+                        if (err){
+                            this.itemType[name] = undefined;
+                            console.log('err: '+err);
+                        }else{
+                            this.itemType[name] = preform;
+                        }
+                    });
+                });
             }
         });
+
     },
 
     update(dt) {
@@ -114,7 +122,7 @@ cc.Class({
         }
         // 判断是否生成新关卡，逻辑需要变更
         if (this.toNextLevel()) {
-            this.createLevel();
+            this.createLevel(this.levelType());
         }
     },
 
@@ -149,15 +157,10 @@ cc.Class({
     GameStart () {
         this.UIControl.GameStart();
         this.score.intoGame(1);
+        this.rocket.setWast(1);
         this.rocket.intoGame();
         
         this.gameStart = true;
-
-        // 测试逻辑
-        this.ItemTestList.forEach(element =>{
-            this.createItemForLevel(element);
-        });
-        // 测试逻辑部分终止
 
         return this;
     },
@@ -185,7 +188,15 @@ cc.Class({
      * 是否进入下一关的判断
      */
     toNextLevel (){
-        return this.ItemList.length < 5;
+        return this.ItemList.length < 3;
+    },
+
+    /**
+     * 创建何种类型的关卡
+     */
+    levelType (){
+        let levelCode = Math.floor(Math.random() * 100) % 3;
+        return Math.max(levelCode -1, 0);
     },
 
     /**
@@ -196,15 +207,51 @@ cc.Class({
         // 具体逻辑需要变更，如添加数个物件的逻辑等
         switch (type){
             case 0:
-                let code = Math.floor(Math.random() * 100) % (this.ItemTypeList.length);
+                let hinderCode = Math.floor(Math.random() * 100) % 6;
                 const itemParams = {
                     needPos : true,
+                    isUFO : false,
                 };
 
-                this.createItemForLevel(this.ItemTypeList[code], itemParams);
+                // 依据code控制障碍的生成
+                switch(hinderCode){
+                    case 0:
+                    case 1:
+                        this.createItemByName('rubbishItem', itemParams);
+                        break;
+                    case 2:
+                        itemParams.isUFO = true;
+                        this.createItemByName('ufoItem', itemParams);
+                        break;
+                    case 3:
+                        this.createItemByName('meteoriteItem', itemParams);
+                        break;
+                    case 4:
+                        this.createItemByName('birdItem', itemParams);
+                        break;
+                    case 5:
+                    default:
+                        this.createItemByName('rubbishItem', itemParams);
+                        break;
+                }
+
                 break;
             case 1:
                 // 电池
+                let batteryCode = Math.floor(Math.random() * 100) % 2;
+                const batteryParams = {
+                    needPos : true,
+                };
+
+                switch(batteryCode){
+                    case 0:
+                        this.createItemByName('BadBattery', batteryParams);
+                        break;
+                    case 1:
+                    default:
+                        this.createItemByName('GoodBattery', batteryParams);
+                        break;
+               }
         }
         // 第几个障碍
 
@@ -212,22 +259,57 @@ cc.Class({
     },
 
     /**
+     * 通过名称创建预制体
+     * @param {string} name 物件的名称
+     * @param {object} param 各类参数
+     */
+    createItemByName (name, param) {
+        // 此处因为文件大小关系将难以兼容ES6特性
+        if (this.itemType[name]){
+
+            param.preform = this.itemType[name];
+            this.createItemForLevel(param);
+        }else{
+
+            this.bundle.load(`Item/${name}`, cc.Prefab, (err, preform) =>{
+                if (err) return;
+                else{
+                    this.itemType[name] = preform;
+                    param.preform = preform;
+                    this.createItemForLevel(param);
+                }
+            });
+        }
+    },
+
+    /**
      * 创建一个物体并加入管理器中
      * @param {cc.Prefab} preform 需要生成物件的预制体
      * @param {Boolean} needPos 是否需要使用位置(cc.v2)初始化
      */
-    createItemForLevel (preform, needPos = false) {
+    createItemForLevel ({preform, needPos = false, isUFO = false}) {
+        
+        if (!preform){
+            return this;
+        }
         // 位置种子
         const seed = Math.random() * this.width - this.width / 2;
 
         const item = cc.instantiate(preform);
         let itemSpt = item.getComponent(Item);
 
+        const parObj = {};
+
         if (needPos){
-            itemSpt.createItem( seed, this.rocket, util.moveLogicParam( cc.v2( seed, 1200)));
-        }else{
-            itemSpt.createItem(seed, this.rocket, util.moveLogicParam());
+            parObj.startPos = cc.v2(seed, 1200);
         }
+        if (isUFO){
+            parObj.startPos = cc.v2(-500, 400);
+            parObj.phase = Math.random() *5;
+        }
+        
+        itemSpt.createItem(seed, this.rocket, util.moveLogicParam(parObj));
+
         this.Canvas.addChild(item);
         this.ItemList.push(itemSpt);
 
