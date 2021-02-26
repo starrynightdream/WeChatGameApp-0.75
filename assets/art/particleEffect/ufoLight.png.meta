@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "8084156f-c05b-471d-a354-24543751bf08",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 32,
+  "height": 32,
+  "platformSettings": {},
+  "subMetas": {
+    "ufoLight": {
+      "ver": "1.0.4",
+      "uuid": "1f8d4c9e-fdd3-434b-8a1d-d8d788e42d24",
+      "rawTextureUuid": "8084156f-c05b-471d-a354-24543751bf08",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 0.5,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 29,
+      "height": 29,
+      "rawWidth": 32,
+      "rawHeight": 32,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
