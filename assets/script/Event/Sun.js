@@ -11,8 +11,6 @@ cc.Class({
     extends: Event,
 
     properties: {
-        windParticle : cc.ParticleSystem,
-        background : cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -22,7 +20,7 @@ cc.Class({
     },
 
     /**
-     * 风警告
+     * 太阳警告
      * @param {Number} xpos 出现的x位置
      */
     warn(xpos = 0){
@@ -33,15 +31,9 @@ cc.Class({
         this.inWork = false;
         // 是否处于警告
         this.inWarn = true;
-        cc.tween(this.background)
-            .to(0.6 , {opacity : 60})
-            .call(()=>{
-                this.inWork = true;
-                this.toWorkFlag = true;
-            })
-            .start();
 
-        this.windParticle.stopSystem();
+        this.inWork = true;
+        this.toWorkFlag = true;
     },
 
     /**
@@ -50,10 +42,8 @@ cc.Class({
     enter(){
         this.toWorkFlag = false;
 
-        this.windParticle.resetSystem();
-
-        cc.tween(this.background)
-            .to(0.6, {opacity: 127})
+        cc.tween(this.node)
+            .to(3, {y : -1200})
             .call(()=>{
                 this.inWork = false;
                 this.toLeaveFlag = true;
@@ -66,17 +56,13 @@ cc.Class({
      */
     leave(){
         this.toLeaveFlag = false;
-        cc.tween(this.background)
-            .to(0.6,{opacity : 0})
-            .call(()=>{
-                this.end = true;
-            })
-            .start();
-        this.windParticle.stopSystem();
+        this.end = true;
     },
 
     inRange (rocketPos){
-        return Math.abs(rocketPos.x - this.x) < 400;
+        const y = Math.abs(rocketPos.y + 687.835 - this.y) < 150;
+        const x = Math.abs(rocketPos.x - this.x) < 150; 
+        return  x && y;
     },
 
     eventEnd(){
@@ -93,21 +79,24 @@ cc.Class({
     },
 
     reSetEve (){
-        this.background.opacity = 0;
-        this.node.y = -900;
+        cc.tween(this.node)
+            .stop();
+
+        this.node.opacity = 100;
+        this.node.y = 1200;
         this.end = true;
         this.inWork = false;
         this.toWorkFlag = false;
         this.toLeaveFlag = false;
     },
+    
     makeEff (rocket) {
-        if (rocket.engine.type === 1){
+        if (rocket.engine.type === 2){
+
             rocket.engine.addE(10);
-        }else{
-            rocket.deBuffForWast(0.5);
+        }else if (this.opacity === 100){
+            this.opacity = 225;
         }
-        this.inWork = false;
-        this.toLeaveFlag = true;
     },
 
     // update (dt) {},
