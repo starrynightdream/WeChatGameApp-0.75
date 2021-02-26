@@ -401,7 +401,7 @@ cc.Class({
      */
     checkEvent() {
         this.gameEve.reFlesh(this.rocket);
-        return Math.floor(Math.random() * 1000) % 50 < 40;
+        return Math.floor(Math.random() * 1000) % 500 < 1;
     },
 
     /**
