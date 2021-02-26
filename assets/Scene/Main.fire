@@ -394,7 +394,7 @@
       "array": [
         0,
         0,
-        320.5268431155668,
+        246.81724007856502,
         0,
         0,
         0,
@@ -575,9 +575,9 @@
         0,
         0,
         1,
-        2.5,
-        2.5,
-        2.5
+        1.7,
+        1.7,
+        1
       ]
     },
     "_eulerAngles": {
@@ -591,7 +591,7 @@
     "_is3DNode": false,
     "_groupIndex": 0,
     "groupIndex": 0,
-    "_id": "1bKNrXp5ZGO6Smo5d4yH15"
+    "_id": "24kVdy5U9MxY6S6k3EybOA"
   },
   {
     "__type__": "cc.Node",
@@ -655,7 +655,7 @@
     "_is3DNode": false,
     "_groupIndex": 0,
     "groupIndex": 0,
-    "_id": "59PdLHQK5G3qJ8lfUR0jAe"
+    "_id": "d1/SZ2jo1B07nRj7g4JSW2"
   },
   {
     "__type__": "cc.Sprite",
@@ -687,7 +687,7 @@
     "_fillRange": 0,
     "_isTrimmedMode": true,
     "_atlas": null,
-    "_id": "46ARwVXodMM7HzMAOFME2P"
+    "_id": "12ebIkeJFHZoYEpkkdIJkW"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -762,7 +762,7 @@
     "_is3DNode": false,
     "_groupIndex": 0,
     "groupIndex": 0,
-    "_id": "39fHpbfxZMjIFe1TpoduNI"
+    "_id": "05AWN003dNo6ICGu6xXEII"
   },
   {
     "__type__": "cc.ParticleSystem",
@@ -865,7 +865,7 @@
     "rotatePerS": 0,
     "rotatePerSVar": 0,
     "_N$preview": true,
-    "_id": "b24SvAca9N46Q5Y5fGgRXy"
+    "_id": "d24RI4TBZDwY9/dYI6neiE"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -895,7 +895,7 @@
       }
     ],
     "playOnLoad": true,
-    "_id": "e06u2R2AVOOIxuTxpSZ6fK"
+    "_id": "22YzEp/sZCF7JvuN4GBDuM"
   },
   {
     "__type__": "cc.PrefabInfo",

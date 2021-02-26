@@ -13,10 +13,11 @@
  */
 
 const Rocket = require('Rocket');
-const Item = require("Item");
-const UIControl = require("UIControl");
-const Score = require("Score");
-const Cloud = require("Cloud");
+const Item = require('Item');
+const UIControl = require('UIControl');
+const Score = require('Score');
+const Cloud = require('Cloud');
+const AudioSys = require('AudioSys');
 
 const util = require("util");
 cc.Class({
@@ -264,7 +265,7 @@ cc.Class({
      * @param {object} param 各类参数
      */
     createItemByName (name, param) {
-        // 此处因为文件大小关系将难以兼容ES6特性
+
         if (this.itemType[name]){
 
             param.preform = this.itemType[name];
