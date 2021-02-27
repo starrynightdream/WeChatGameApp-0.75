@@ -98,7 +98,7 @@
     "_prefab": {
       "__id__": 7
     },
-    "_opacity": 255,
+    "_opacity": 200,
     "_color": {
       "__type__": "cc.Color",
       "r": 0,
@@ -230,7 +230,7 @@
       "__uuid__": "64a77471-1d74-4c9a-95aa-bc8e007876bf"
     },
     "_texture": null,
-    "_stopped": false,
+    "_stopped": true,
     "playOnLoad": false,
     "autoRemoveOnFinish": false,
     "totalParticles": 150,
