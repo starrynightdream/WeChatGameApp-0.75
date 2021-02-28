@@ -46,6 +46,8 @@ cc.Class({
         if (this.node.childrenCount > 0) {
             this.childCloud = this.node.children[0];
         }
+        this.ps = this.node.getComponent(cc.ParticleSystem);
+        this.cps = this.childCloud.getComponent(cc.ParticleSystem);
         this.reSetCloud();
     },
 
@@ -97,7 +99,10 @@ cc.Class({
      * 终止投射粒子
      */
     cloudStop() {
+        this.ps.resetSystem();
+        this.cps.resetSystem();
         this.node.active = false;
+        return this;
     },
 
     /**
@@ -105,5 +110,6 @@ cc.Class({
      */
     cloudStart() {
         this.node.active = true;
+        return this;
     },
 });

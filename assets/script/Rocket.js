@@ -54,9 +54,9 @@ cc.Class({
         },
 
         k:{
-            default:1,
-            type:cc.Float,
-            tooltip:"滑动的接收灵敏度，最好介于0-1",
+            default: 1,
+            type: cc.Float,
+            tooltip: "滑动的接收灵敏度，最好介于0-1",
         }
     },
 
@@ -65,6 +65,7 @@ cc.Class({
     // onLoad () {},
 
     start () {
+        // 开启碰撞检测
         const manager = cc.director.getCollisionManager();
         manager.enabled = true;
         // manager.enabledDebugDraw = true;
@@ -99,8 +100,14 @@ cc.Class({
             this.gameControl.pollute(5 * dt);
         }
 
-        if (this.alive)
-            this.angle -= (this.controlBar.bar.progress - 0.5) *0.05 * this.k;
+        // 控制部分
+        if (this.alive){
+            // let k = this.k * ( Math.abs( this.angle - Math.PI /2) + 1);
+            let k = this.k;
+            let progress = this.controlBar.bar.progress - 0.5;
+            let rebackF = (this.angle - Math.PI/2) * (progress) < 0 ? 1.2 : 0.8;
+            this.angle -= progress *0.05 * k * rebackF; 
+        }
 
         // 对应反映火箭状态
         this.node.angle = ((this.angle *180 /Math.PI) -90);

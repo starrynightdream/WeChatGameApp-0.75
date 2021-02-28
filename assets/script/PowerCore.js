@@ -84,9 +84,10 @@ cc.Class({
      */
     use (wast){
         if (wast <=0.0001){
-            return true
+            return true;
         }
-        let i,dis
+
+        let i,dis;
         while (this.count!=0){
             i = this.index
             dis = wast - this.eList[i]
@@ -99,7 +100,7 @@ cc.Class({
                 break
             }
         }
-        return wast<=0
+        return wast <= 0;
     },
 
     /**

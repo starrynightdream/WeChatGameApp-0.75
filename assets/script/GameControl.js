@@ -360,7 +360,7 @@ cc.Class({
         if (isUFO){
             parObj.startPos = cc.v2(-500, 400);
             parObj.phase = Math.random() *5;
-            parObj.speed = 300;
+            parObj.speed = 100;
         }
         
         itemSpt.createItem(seed, this.rocket, util.moveLogicParam(parObj));
