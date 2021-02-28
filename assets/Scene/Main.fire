@@ -394,7 +394,7 @@
       "array": [
         0,
         0,
-        245.5272406901764,
+        245.8835123630841,
         0,
         0,
         0,
@@ -787,7 +787,7 @@
       "__uuid__": "64a77471-1d74-4c9a-95aa-bc8e007876bf"
     },
     "_texture": null,
-    "_stopped": false,
+    "_stopped": true,
     "playOnLoad": true,
     "autoRemoveOnFinish": false,
     "totalParticles": 191,
@@ -3542,7 +3542,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        747.965,
+        1189.507,
         0,
         0,
         0,
@@ -3604,7 +3604,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -545.475,
+        -64.51,
         0,
         0,
         0,
@@ -3651,7 +3651,7 @@
       "__uuid__": "4fa38dca-7d41-42f8-a93b-1089d6c0d961"
     },
     "_texture": null,
-    "_stopped": false,
+    "_stopped": true,
     "playOnLoad": true,
     "autoRemoveOnFinish": false,
     "totalParticles": 100,
@@ -3754,7 +3754,7 @@
       "__uuid__": "4fa38dca-7d41-42f8-a93b-1089d6c0d961"
     },
     "_texture": null,
-    "_stopped": false,
+    "_stopped": true,
     "playOnLoad": true,
     "autoRemoveOnFinish": false,
     "totalParticles": 100,
