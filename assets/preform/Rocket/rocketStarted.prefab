@@ -65,8 +65,8 @@
         0,
         0,
         1,
-        1,
-        1,
+        2,
+        2,
         1
       ]
     },
@@ -393,11 +393,6 @@
       "__id__": 1
     },
     "_enabled": true,
-    "step": 10,
-    "engine": null,
-    "powerCore": null,
-    "controlBar": null,
-    "gameControlNode": null,
     "_id": ""
   },
   {

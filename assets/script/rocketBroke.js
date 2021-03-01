@@ -1,95 +1,89 @@
-// Learn cc.Class:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] https://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
-
-var PowerCore = require("PowerCore")
-var Engine = require("Engine")
-var ControlBar = require("ControlBar")
 
 cc.Class({
     extends: cc.Component,
 
     properties: {
-        // 步长
-        step:{
-            default:10,
-            type: cc.Integer,
-            tooltip:"步长"
-        },
-        // 引擎
-        engine:{
-            default:null,
-            type: Engine,
-            tooltip:"引擎类"
-        },
-        // 能量槽
-        powerCore:{
-            default:null,
-            type: PowerCore,
-            tooltip:"能量槽类"
-        },
-        // 控制版面
-        controlBar:{
-            default:null,
-            type:ControlBar,
-            tooltip:"控制滑动板"
-        },
-
-        gameControlNode:{
-            default: null,
-            type: cc.Node,
-            tooltip:"游戏控制器的节点"
-        },
     },
-
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {},
+    start (){
+        this.ani = this.getComponent(cc.Animation);
+    },
 
     /**
-    * 动画方面
+     * 进入游戏
+     */
+    readyToPlay(){
+        this.node.y = -700;
+        this.node.opacity = 255;
+        cc.tween(this.node)
+            .to(0.5, {y :0})
+            .start();
+
+        return this;
+    },
+
+    /**
+     * 开始播放动画
+     */
+    intoGame(){
+        this.ani.play();
+
+        return this;
+    },
+    /**
+    * 火箭动画结束回调
     */
     rocketBroke(){
-        rocketBroke=this.node
+        const rocketBroke=this.node;
         cc.assetManager.loadBundle('preform', (err, bundle) => {
 
             if (err){
-                console.log(err)
+                console.log(err);
             }
             bundle.load("Rocket/spiteItem", cc.Prefab, function (err, prefab) {
+
+                if (err){
+                    console.log(err);
+                }
                 let spiteItem = cc.instantiate(prefab);
-                rocketBroke.addChild(spiteItem)
+                rocketBroke.addChild(spiteItem);
             });
-            bundle.load("Rocket/explodeItem", cc.Prefab, function (err, prefab) {
+
+            bundle.load("Rocket/explodeItem", cc.Prefab, (err, prefab) =>{
+                if (err){
+                    console.log(err);
+                }
+
                 let exploreItem = cc.instantiate(prefab);
-                rocketBroke.addChild(exploreItem)
+                rocketBroke.addChild(exploreItem);
             });
         });
     },
 
+    /**
+     * 火箭开始动画播放完毕的回调
+     */
     rocketStarted(){
-        rocketBroke=this.node
+        const rocketBroke=this.node;
+
         cc.assetManager.loadBundle('preform', (err, bundle) => {
 
             if (err){
-                console.log(err)
+                console.log(err);
             }
             
-            bundle.load("Rocket/flameItem", cc.Prefab, function (err, prefab) {
-                let flameItem = cc.instantiate(prefab);
-                rocketBroke.addChild(flameItem)
-                flameItem.setPosition(0,-185,0)
-                console.log(flameItem)
+            bundle.load('Rocket/rocketItem', cc.Prefab, (err, prefab)=> {
+                if (err) console.log(`err when load start reocket err ${err}`);
+
+                let rocketItem= cc.instantiate(prefab);
+                rocketBroke.parent.addChild(rocketItem);
+                
+                rocketBroke.parent.getComponent('Rocket').callAfterAni(); 
+                this.node.opacity = 0;
             });
         });
     }
-
-    
 
 });

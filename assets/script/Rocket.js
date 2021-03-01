@@ -12,6 +12,7 @@ const PowerCore = require("PowerCore");
 const Engine = require("Engine");
 const ControlBar = require("ControlBar");
 const BackGround = require("BackGround");
+const RocketBroke = require('rocketBroke');
 
 cc.Class({
     extends: cc.Component,
@@ -45,6 +46,10 @@ cc.Class({
             default: null,
             type: BackGround,
             tooltip: "用于反映高度和时间的背景" ,
+        },
+        rocketBroke:{
+            default: null,
+            type : RocketBroke,
         },
 
         gameControlNode:{
@@ -139,6 +144,8 @@ cc.Class({
         this.powerCore.reSetPC();
         this.controlBar.reSetConBar();
 
+        this.rocketBroke.readyToPlay();
+
         this.speed = 20;
         this.alive = true;
         this.inGame = false;
@@ -150,7 +157,7 @@ cc.Class({
     intoGame (){
         this.controlBar.reSetConBar();
         // 动画播放结束后进入游戏状态
-        this.callAfterAni();
+        this.rocketBroke.intoGame();
     },
 
     /**
