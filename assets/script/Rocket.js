@@ -147,8 +147,10 @@ cc.Class({
         this.rocketBroke.readyToPlay();
 
         this.speed = 20;
-        this.alive = true;
+speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.        this.alive = true;
         this.inGame = false;
+
+        return this;
     },
 
     /**

@@ -15,7 +15,7 @@ cc.Class({
      * 进入游戏
      */
     readyToPlay(){
-        this.node.y = -700;
+        this.node.y = -800;
         this.node.opacity = 255;
         cc.tween(this.node)
             .to(0.5, {y :0})
@@ -55,35 +55,4 @@ cc.Class({
                 if (err){
                     console.log(err);
                 }
-
-                let exploreItem = cc.instantiate(prefab);
-                rocketBroke.addChild(exploreItem);
-            });
-        });
-    },
-
-    /**
-     * 火箭开始动画播放完毕的回调
-     */
-    rocketStarted(){
-        const rocketBroke=this.node;
-
-        cc.assetManager.loadBundle('preform', (err, bundle) => {
-
-            if (err){
-                console.log(err);
-            }
-            
-            bundle.load('Rocket/rocketItem', cc.Prefab, (err, prefab)=> {
-                if (err) console.log(`err when load start reocket err ${err}`);
-
-                let rocketItem= cc.instantiate(prefab);
-                rocketBroke.parent.addChild(rocketItem);
-                
-                rocketBroke.parent.getComponent('Rocket').callAfterAni(); 
-                this.node.opacity = 0;
-            });
-        });
-    }
-
-});
+let exploreItem = cc.instantiate(prefab); rocketBroke.addChild(exploreItem); }); }); }, /** * 火箭开始动画播放完毕的回调 */ rocketStarted(){ const rocketBroke=this.node; cc.assetManager.loadBundle('preform', (err, bundle) => { if (err){ console.log(err); } bundle.load('Rocket/rocketItem', cc.Prefab, (err, prefab)=> { if (err) console.log(`err when load start reocket err ${err}`); let rocketItem= cc.instantiate(prefab); rocketBroke.parent.addChild(rocketItem); rocketBroke.parent.getComponent('Rocket').callAfterAni(); this.node.opacity = 0; }); }); } }); 
