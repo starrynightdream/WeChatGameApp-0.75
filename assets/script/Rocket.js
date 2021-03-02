@@ -47,9 +47,9 @@ cc.Class({
             type: BackGround,
             tooltip: "用于反映高度和时间的背景" ,
         },
-        rocketBroke:{
+        rocketItem :{
             default: null,
-            type : RocketBroke,
+            type: RocketBroke,
         },
 
         gameControlNode:{
@@ -137,6 +137,25 @@ cc.Class({
     // 接口
 
     /**
+     * 设置火箭结束活动
+     * @param {Number} type 死亡的类型
+     */
+    death (type = 0) {
+        // 届时需平滑过渡
+        this.alive = false
+        this.speed = 0
+        this.node.x = 0
+        this.angle = Math.PI /2
+
+        if (type == 0){
+            this.gameControl.audioSys.play('explore');
+        }
+        this.backGround.reSetBackGround();
+        this.rocketItem.whenDeath();
+    },
+
+
+    /**
      * 使火箭回到游戏最开始的时候 
      */
     reSetRocket (){
@@ -144,11 +163,9 @@ cc.Class({
         this.powerCore.reSetPC();
         this.controlBar.reSetConBar();
 
-        this.rocketBroke.readyToPlay();
-
         this.speed = 20;
-speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 20;        this.        this.alive = true;
         this.inGame = false;
+        this.alive = true;
 
         return this;
     },
@@ -159,7 +176,8 @@ speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 
     intoGame (){
         this.controlBar.reSetConBar();
         // 动画播放结束后进入游戏状态
-        this.rocketBroke.intoGame();
+
+        this.callAfterAni();
     },
 
     /**
@@ -169,6 +187,7 @@ speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 
     callAfterAni (){
 
         // 在火箭播放完动画后背景才开始进入动画
+        this.rocketItem.whenGame();
         this.backGround.intoGame();
         this.inGame = true;
     },
@@ -202,23 +221,6 @@ speed = 20;        this.speed = 20;        this.speed = 20;        this.speed = 
         this.speed = v
     },
     
-    /**
-     * 设置火箭结束活动
-     * @param {Number} type 死亡的类型
-     */
-    death (type = 0) {
-        // 届时需平滑过渡
-        this.alive = false
-        this.speed = 0
-        this.node.x = 0
-        this.angle = Math.PI /2
-
-        if (type == 0){
-            this.gameControl.audioSys.play('explore');
-        }
-        this.backGround.reSetBackGround();
-    },
-
     /**
      * 变更发动机类型
      * @param {Number} type 发动机的代号

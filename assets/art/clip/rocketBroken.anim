@@ -48,6 +48,11 @@
       "frame": 1.25,
       "func": "rocketBroke",
       "params": []
+    },
+    {
+      "frame": 1.8,
+      "func": "destroy",
+      "params": []
     }
   ]
 }

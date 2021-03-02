@@ -74,7 +74,7 @@ cc.Class({
             this.bundle.load(name, cc.AudioClip, (err, audio) =>{
 
                 if (err){
-                    console.log('err' + err);
+                    console.log('err in load audio : ' + err);
                 }else{
                     this.audioType[name] = audio;
                     //播放
