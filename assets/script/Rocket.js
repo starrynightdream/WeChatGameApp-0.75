@@ -152,7 +152,7 @@ cc.Class({
      */
     death (type = 0) {
 
-        this.rocketItem.whenDeath(this.node.x, this.node.y, this.node.angle, this.node.parent);
+        this.rocketItem.whenDeath(this.node.x, this.node.y, this.node.angle, this.node.parent, this);
         // 届时需平滑过渡
         this.alive = false;
         this.speed = 0;
@@ -162,13 +162,17 @@ cc.Class({
         if (type == 0){
             this.gameControl.audioSys.play('explore');
         }
+        this.backGround.reSetBackGround();
+    },
+
+    callAfterDeath(){
+        return this;
     },
 
     /**
      * 
      */
     deathAftAni(){
-        this.backGround.reSetBackGround();
         return this;
     },
 

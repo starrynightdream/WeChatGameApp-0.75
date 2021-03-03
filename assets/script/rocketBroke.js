@@ -32,6 +32,18 @@ cc.Class({
         let pos = cc.v2(x, y);
         this.createBroke(pos, ang, parent);
 
+        this.node.y = -1700;
+        cc.tween(this.node)
+            .delay(3)
+            .to(1, {y:0})
+            .call(()=>{
+                if (!this.fatherR){
+                    this.fatherR = this.node.parent.getComponent('Rocket');
+                }
+                this.fatherR.callAfterDeath();
+            })
+            .start();
+
         return this;
     },
 
@@ -46,7 +58,7 @@ cc.Class({
      * 创建一个损坏火箭
      * @param {Node} toNode 创建一个node与之相等的物件
      */
-    createBroke (pos, ang, par){
+    createBroke (pos, ang, par, rocket){
         
         const a = (err, bundle) =>{
             if (err){
@@ -63,6 +75,7 @@ cc.Class({
                         rocketB.angle = ang;
                         rocketB.scale = cc.v2(0.6, 0.6);
                         rocketB.parent = par;
+                        rocketB.rocket = rocket;
                     }
                 });
             }
@@ -84,10 +97,11 @@ cc.Class({
     rocketBroke(){
         const rocketBroke=this.node;
         const a = (err, bundle) =>{
+
             if (err){
                 console.log(err);
             }
-            bundle.load("Rocket/spiteItem", cc.Prefab, function (err, prefab) {
+            bundle.load("Rocket/spiteItem", cc.Prefab, (err, prefab) =>{
 
                 if (err){
                     console.log(err);
@@ -104,7 +118,6 @@ cc.Class({
                 rocketBroke.addChild(exploreItem); 
             }); 
 
-            rocketBroke.parent.getComponent('Rocket').deathAftAni();
         }
 
         this.bundle = cc.assetManager.getBundle('preform');

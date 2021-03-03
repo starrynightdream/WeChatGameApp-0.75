@@ -105,6 +105,8 @@ cc.Class({
             
             this.gameEve = this.getComponent(GameEventSys);
             this.gameEve.createShower(); 
+
+            this.GameStart();
         });
 
     },

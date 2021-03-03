@@ -67,6 +67,7 @@ cc.Class({
     endAni () {
 
         cc.tween(this.ground)
+            .delay(3)
             .to(1, {y: -900}, {easing: t => Math.sqrt(t)})
             .start();
     },
