@@ -1,0 +1,137 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "cloud",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 3,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 22,
+  "curveData": {
+    "paths": {
+      "opacity": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 0,
+              "value": 200,
+              "curve": [
+                0.18,
+                0.89,
+                0.31,
+                1.21
+              ]
+            },
+            {
+              "frame": 2.9833333333333334,
+              "value": 100
+            },
+            {
+              "frame": 3,
+              "value": 150
+            }
+          ]
+        }
+      },
+      "opacity/c1": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                86.218,
+                -92.337,
+                0
+              ]
+            },
+            {
+              "frame": 1,
+              "value": [
+                64.218,
+                -92.337,
+                0
+              ]
+            },
+            {
+              "frame": 1.5,
+              "value": [
+                53.218,
+                -92.337,
+                0
+              ]
+            },
+            {
+              "frame": 3,
+              "value": [
+                86.218,
+                -92.337,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "opacity/c2": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                -121.688,
+                80.15,
+                0
+              ]
+            },
+            {
+              "frame": 2,
+              "value": [
+                -100,
+                80.15,
+                0
+              ]
+            },
+            {
+              "frame": 3,
+              "value": [
+                -121.688,
+                80.15,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "opacity/c4": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                0.131,
+                -118.049,
+                0
+              ]
+            },
+            {
+              "frame": 1,
+              "value": [
+                -55.584,
+                -118.049,
+                0
+              ]
+            },
+            {
+              "frame": 3,
+              "value": [
+                0.131,
+                -118.049,
+                0
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}
