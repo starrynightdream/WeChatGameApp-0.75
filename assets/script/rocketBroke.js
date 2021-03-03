@@ -28,13 +28,9 @@ cc.Class({
     /**
      * 当火箭死亡的时候
      */
-    whenDeath (){
-        this.createBroke(this.node.parent);
-
-        this.node.y = -1200;
-        cc.tween(this.node)
-            .to(0.5, {y :0})
-            .start();
+    whenDeath (x, y, ang, parent){
+        let pos = cc.v2(x, y);
+        this.createBroke(pos, ang, parent);
 
         return this;
     },
@@ -50,7 +46,7 @@ cc.Class({
      * 创建一个损坏火箭
      * @param {Node} toNode 创建一个node与之相等的物件
      */
-    createBroke (toNode){
+    createBroke (pos, ang, par){
         cc.assetManager.loadBundle('preform', (err, bundle) =>{
 
             if (err){
@@ -62,13 +58,16 @@ cc.Class({
                     if (err){
                         console.log(`err when createBroken load rocketBroke ${err}`);
                     }else{
+
                         const rocketB = cc.instantiate(preform);
-                        rocketB.node = toNode;
-                        rocketB.node.parent = toNode.parent;
+                        rocketB.position = pos;
+                        rocketB.angle = ang;
+                        rocketB.scale = cc.v2(0.6, 0.6);
+                        rocketB.parent = par;
                     }
-                })
+                });
             }
-        })
+        });
     },
 
     // rocketBroke----------------------
@@ -102,5 +101,4 @@ cc.Class({
         }); 
     },
 
-    
 }); 

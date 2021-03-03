@@ -94,9 +94,10 @@ cc.Class({
 
         if (!(overUse && this.alive)){
             // 能量不足消耗
-            this.death(1);
+            if (this.alive){
+                this.death(1);
+            }
             this.gameControl.GameOver();
-            // this.active = false;
         }
 
         // 反映污染
@@ -141,17 +142,18 @@ cc.Class({
      * @param {Number} type 死亡的类型
      */
     death (type = 0) {
+
+        this.rocketItem.whenDeath(this.node.x, this.node.y, this.node.angle, this.node.parent);
         // 届时需平滑过渡
-        this.alive = false
-        this.speed = 0
-        this.node.x = 0
-        this.angle = Math.PI /2
+        this.alive = false;
+        this.speed = 0;
+        this.node.x = 0;
+        this.angle = Math.PI /2;
 
         if (type == 0){
             this.gameControl.audioSys.play('explore');
         }
         this.backGround.reSetBackGround();
-        this.rocketItem.whenDeath();
     },
 
 
@@ -277,15 +279,5 @@ cc.Class({
      */
     getEngE(){
         return this.engine.E / this.engine.EMAX;
-    },
-
-    /**
-     * 通过拖动条变更方向
-     * 弃用
-     * @param {*} slider 拖动条
-     */
-    setAng(slider){
-        // if (this.alive)
-        //     this.angle -= (slider.progress - 0.5) *0.05;
     },
 });
