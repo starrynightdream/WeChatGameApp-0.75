@@ -1,9 +1,3 @@
-// Learn cc.Class:
-//  - https://docs.cocos.com/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
 cc.Class({
     extends: cc.Component,
@@ -18,6 +12,18 @@ cc.Class({
     start () {
         this.ground = this.node.childrenCount >0 ? this.node.children[0] : null;
         this.reSetBackGround();
+        cc.assetManager.loadBundle('preform', (err, bundle) =>{
+
+            if (err) {
+                console.log('err when load bundle in background');
+                return ;
+            }
+            this.bundle = bundle;
+        });
+
+        this.itemList = [
+            'birdItem',
+        ];
     },
 
     // update (dt) {},
@@ -26,6 +32,8 @@ cc.Class({
      */
     reSetBackGround (){
         this.endAni();
+        this.inGame = false;
+        this.nothing = true;
     },
 
     /**
@@ -33,6 +41,7 @@ cc.Class({
      */
     intoGame(){
         this.startAni();
+        this.inGame = true;
     },
 
     /**
@@ -55,5 +64,32 @@ cc.Class({
         cc.tween(this.ground)
             .to(1, {y: -900}, {easing: t => Math.sqrt(t)})
             .start();
+    },
+
+    update (dt){
+
+        if (this.inGame && this.nothing){
+            let code = Math.random();
+            if (code < 0.006){
+                // return ;
+            }
+
+            this.nothing = false;
+            // 创建背景运动物体
+            let whichItem = Math.floor( Math.random() * 100) % this.itemList.length;
+            this.bundle.load(`Item/${this.itemList[whichItem]}`, cc.Prefab, (err, preform) =>{
+
+                if (err){
+                    console.log(`err where load the ${this.itemList[whichItem].inGame } err: ${err}`);
+                    return;
+                }
+                const creItem = cc.instantiate(preform);
+                creItem.parent = this.node;
+            });
+
+            cc.tween(this)
+                .to(30, {nothing: true})
+                .start();
+        }
     },
 });

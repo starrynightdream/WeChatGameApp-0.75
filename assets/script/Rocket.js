@@ -108,11 +108,20 @@ cc.Class({
 
         // 控制部分
         if (this.alive){
-            // let k = this.k * ( Math.abs( this.angle - Math.PI /2) + 1);
-            let k = this.k;
+            // // let k = this.k * ( Math.abs( this.angle - Math.PI /2) + 1);
+            // let k = this.k;
             let progress = this.controlBar.bar.progress - 0.5;
-            let rebackF = (this.angle - Math.PI/2) * (progress) < 0 ? 1.2 : 0.8;
-            this.angle -= progress *0.05 * k * rebackF; 
+            // let rebackF = (this.angle - Math.PI/2) * (progress) < 0 ? 1.2 : 0.8;
+            // this.angle -= progress *0.05 * k * rebackF; 
+
+            progress += 0.5;
+            let targetAng = Math.PI - progress * Math.PI;
+            let fixAng = targetAng - this.angle;
+            if (Math.abs(fixAng) < Math.PI/16){
+                this.angle = targetAng;
+            }else{
+                this.angle += fixAng;
+            }
         }
 
         // 对应反映火箭状态

@@ -553,9 +553,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "cdb72ccd-69ca-49be-896c-5f0ed3f890dc"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 0,
     "_fillType": 0,
@@ -619,23 +617,6 @@
       "__id__": 1
     },
     "_enabled": true,
-    "startPos": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "rocketPos": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "rocket": null,
-    "angle": 0,
-    "speed": 0,
-    "bias": 0,
-    "amplitude": 0,
-    "angularVelocity": 0,
-    "phase": 0,
     "_id": ""
   },
   {

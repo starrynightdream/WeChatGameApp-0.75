@@ -76,7 +76,6 @@ cc.Class({
         this.loadList = [
             'BadBattery',
             'GoodBattery',
-            'birdItem',
             'meteoriteItem',
             'rubbishItem',
             'ufoItem',
