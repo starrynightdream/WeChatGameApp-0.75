@@ -10,7 +10,7 @@ cc.Class({
 
     properties: {
         EMAX:{
-            default:500,
+            default:100,
             type:cc.Integer,
             tooltip:"最高能量"
         }

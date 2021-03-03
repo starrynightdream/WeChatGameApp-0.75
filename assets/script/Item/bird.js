@@ -2,6 +2,10 @@
 cc.Class({
     extends: cc.Component,
     properties: {
+        t: {
+            default: 4,
+            type: cc.Integer,
+        } 
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -20,7 +24,7 @@ cc.Class({
         }
         this.node.x = -600 * face;
         cc.tween(this.node)
-            .to(4, {x : 600 * face})
+            .to(this.t, {x : 600 * face})
             .call(() =>{
                 this.node.destroy();
             })
