@@ -354,6 +354,7 @@ cc.Class({
         const seed = Math.random() * this.width - this.width / 2;
 
         const item = cc.instantiate(preform);
+        item.y = 2400;
         let itemSpt = item.getComponent(Item);
         if (!itemSpt){
             item.destroy();

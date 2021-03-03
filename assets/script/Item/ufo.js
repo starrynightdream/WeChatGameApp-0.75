@@ -24,7 +24,7 @@ cc.Class({
     },
 
 
-    createItem:function(xp,rocket,param){
+    createItem(xp,rocket,param){
         this._super(xp,rocket,param)
         //设置ufo移动模式
         this.setMoveLogic()
@@ -39,10 +39,10 @@ cc.Class({
         this.vx=this.speed
     },
 
-    Move:function(dt,vy,rocketNode){
+    Move(dt,vy,rocketNode){
         this.node.x += this.vx*dt
         this.node.y = (this.amplitude*Math.sin((this.speed+this.bias)*this.angularVelocity+this.phase)+this.startPos.y)
-        this.bias+=this.speed
+        this.bias +=this.speed
     },
 
     needAudio (){
