@@ -394,7 +394,7 @@
       "array": [
         0,
         0,
-        246.81724007856502,
+        239.02301144450507,
         0,
         0,
         0,
@@ -1817,14 +1817,14 @@
     "customEventData": "button2"
   },
   {
-    "__type__": "faaa9TG1KNHSou4knoDNnY4",
+    "__type__": "340c49uXrxD45ShRK2aKjVg",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 34
     },
     "_enabled": true,
-    "_id": "fbRpRaHDNOVoIXASF4BeI+"
+    "_id": "39d8E/g3RB55QOVmqY1ooY"
   },
   {
     "__type__": "cc.Node",

@@ -178,7 +178,9 @@ cc.Class({
         this.score.reSetScore();
         this.rocket.reSetRocket();
 
-        this.gameEve.reSetAllEve();
+        if (this.gameEve){
+            this.gameEve.reSetAllEve();
+        }
 
         this.gameStart = false;
 

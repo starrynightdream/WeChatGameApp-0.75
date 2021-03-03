@@ -15,20 +15,10 @@ cc.Class({
  
         this.itemList = [
             'birdItem',
-            'cloundItem',
+            'cloudItem',
         ];
 
         this.bundle = cc.assetManager.getBundle('preform');
-        if (this.bundle)
-            return;
-        cc.assetManager.loadBundle('preform', (err, bundle) =>{
-
-            if (err) {
-                console.log('err when load bundle in background');
-                return ;
-            }
-            this.bundle = bundle;
-        });
    },
 
     // update (dt) {},
@@ -82,16 +72,29 @@ cc.Class({
 
             this.nothing = false;
             // 创建背景运动物体
-            let whichItem = Math.floor( Math.random() * 100) % this.itemList.length;
-            this.bundle.load(`Item/${this.itemList[whichItem]}`, cc.Prefab, (err, preform) =>{
+            const a = (err, bundle) =>{
 
                 if (err){
-                    console.log(`err where load the ${this.itemList[whichItem].inGame } err: ${err}`);
-                    return;
+                    console.log(`err when load bundle in background err: ${err}`);
                 }
-                const creItem = cc.instantiate(preform);
-                creItem.parent = this.node;
-            });
+
+                bundle.load(`Item/${this.itemList[whichItem]}`, cc.Prefab, (err, preform) =>{
+
+                    if (err){
+                        console.log(`err where load the ${this.itemList[whichItem]} in bg err: ${err}`);
+                        return;
+                    }
+                    const creItem = cc.instantiate(preform);
+                    creItem.parent = this.node;
+                });
+            }
+
+            let whichItem = Math.floor( Math.random() * 100) % this.itemList.length;
+
+            this.bundle = cc.assetManager.getBundle('preform');
+            if (this.bundle){
+                a(null, this.bundle);
+            }            
 
             cc.tween(this)
                 .to(8, {})

@@ -59,11 +59,15 @@ cc.Class({
      * @param {Node} toNode 创建一个node与之相等的物件
      */
     createBroke (pos, ang, par, rocket){
-        
+       const self = this;
+
         const a = (err, bundle) =>{
+            self.bundle = bundle;
+
             if (err){
                 console.log(`err when createBroken load bundle ${err}`);
             }else{
+
                 bundle.load('Rocket/rocketBroken', cc.Prefab, (err, preform) =>{
                     
                     if (err){
@@ -86,7 +90,6 @@ cc.Class({
             a(null, this.bundle);
             return;
         }
-        cc.assetManager.loadBundle('preform', a);
     },
 
     // rocketBroke----------------------
