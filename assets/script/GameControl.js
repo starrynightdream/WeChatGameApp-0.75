@@ -82,6 +82,7 @@ cc.Class({
             'SunEng',
             'WindEng',
         ];
+
         cc.assetManager.loadBundle('preform', (err, bundle) =>{
             
             if (err) throw err;
@@ -322,7 +323,7 @@ cc.Class({
 
             param.preform = this.itemType[name];
             this.createItemForLevel(param);
-        }else{
+        }else if(this.bundle){
 
             this.bundle.load(`Item/${name}`, cc.Prefab, (err, preform) =>{
                 if (err) return;
@@ -403,6 +404,10 @@ cc.Class({
      * 根据状态进行事件判断
      */
     checkEvent() {
+        if (!this.gameEve){
+            // gameEve尚未加载
+            return false;
+        }
         this.gameEve.reFlesh(this.rocket);
         return Math.floor(Math.random() * 1000) % 500 < 1;
     },

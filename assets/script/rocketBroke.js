@@ -47,12 +47,11 @@ cc.Class({
      * @param {Node} toNode 创建一个node与之相等的物件
      */
     createBroke (pos, ang, par){
-        cc.assetManager.loadBundle('preform', (err, bundle) =>{
-
+        
+        const a = (err, bundle) =>{
             if (err){
                 console.log(`err when createBroken load bundle ${err}`);
             }else{
-
                 bundle.load('Rocket/rocketBroken', cc.Prefab, (err, preform) =>{
                     
                     if (err){
@@ -67,7 +66,14 @@ cc.Class({
                     }
                 });
             }
-        });
+        }
+
+        this.bundle = cc.assetManager.getBundle('preform');
+        if (this.bundle){
+            a(null, this.bundle);
+            return;
+        }
+        cc.assetManager.loadBundle('preform', a);
     },
 
     // rocketBroke----------------------
@@ -77,8 +83,7 @@ cc.Class({
     */
     rocketBroke(){
         const rocketBroke=this.node;
-        cc.assetManager.loadBundle('preform', (err, bundle) => {
-
+        const a = (err, bundle) =>{
             if (err){
                 console.log(err);
             }
@@ -98,7 +103,15 @@ cc.Class({
                 let exploreItem = cc.instantiate(prefab); 
                 rocketBroke.addChild(exploreItem); 
             }); 
-        }); 
-    },
 
+            rocketBroke.parent.getComponent('Rocket').deathAftAni();
+        }
+
+        this.bundle = cc.assetManager.getBundle('preform');
+        if (this.bundle){
+            a(null, this.bundle);
+            return ;
+        }
+        cc.assetManager.loadBundle('preform', a); 
+    },
 }); 

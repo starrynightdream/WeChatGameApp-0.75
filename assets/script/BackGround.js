@@ -12,6 +12,15 @@ cc.Class({
     start () {
         this.ground = this.node.childrenCount >0 ? this.node.children[0] : null;
         this.reSetBackGround();
+ 
+        this.itemList = [
+            'birdItem',
+            'cloundItem',
+        ];
+
+        this.bundle = cc.assetManager.getBundle('preform');
+        if (this.bundle)
+            return;
         cc.assetManager.loadBundle('preform', (err, bundle) =>{
 
             if (err) {
@@ -20,11 +29,7 @@ cc.Class({
             }
             this.bundle = bundle;
         });
-
-        this.itemList = [
-            'birdItem',
-        ];
-    },
+   },
 
     // update (dt) {},
     /**

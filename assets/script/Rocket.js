@@ -162,7 +162,14 @@ cc.Class({
         if (type == 0){
             this.gameControl.audioSys.play('explore');
         }
+    },
+
+    /**
+     * 
+     */
+    deathAftAni(){
         this.backGround.reSetBackGround();
+        return this;
     },
 
 
