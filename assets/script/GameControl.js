@@ -350,6 +350,10 @@ cc.Class({
 
         const item = cc.instantiate(preform);
         let itemSpt = item.getComponent(Item);
+        if (!itemSpt){
+            item.destroy();
+            return this;
+        }
 
         const parObj = {};
 

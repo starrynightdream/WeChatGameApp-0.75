@@ -18,6 +18,7 @@ cc.Class({
             .to(4, {x : 600})
             .call(() =>{
                 this.node.destroy();
+                console.log('destroy this')
             })
             .start();
     },

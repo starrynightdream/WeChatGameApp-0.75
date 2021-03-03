@@ -71,7 +71,7 @@ cc.Class({
         if (this.inGame && this.nothing){
             let code = Math.random();
             if (code < 0.006){
-                // return ;
+                return ;
             }
 
             this.nothing = false;
@@ -88,7 +88,10 @@ cc.Class({
             });
 
             cc.tween(this)
-                .to(30, {nothing: true})
+                .to(8, {})
+                .call(()=>{
+                    this.nothing = true;
+                })
                 .start();
         }
     },
