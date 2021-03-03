@@ -3,10 +3,10 @@
   "_name": "bird",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 4,
+  "_duration": 3.033333333333333,
   "sample": 60,
   "speed": 1,
-  "wrapMode": 2,
+  "wrapMode": 22,
   "curveData": {
     "paths": {
       "bird": {
@@ -25,31 +25,12 @@
               "frame": 1,
               "value": [
                 0,
-                80,
+                50,
                 0
-              ],
-              "curve": "cubicIn"
+              ]
             },
             {
-              "frame": 2,
-              "value": [
-                0,
-                0,
-                0
-              ],
-              "curve": "cubicOut"
-            },
-            {
-              "frame": 3.0166666666666666,
-              "value": [
-                0,
-                -80,
-                0
-              ],
-              "curve": "cubicIn"
-            },
-            {
-              "frame": 4,
+              "frame": 3,
               "value": [
                 0,
                 0,
@@ -65,21 +46,78 @@
             },
             {
               "frame": 1,
-              "value": 45,
-              "curve": "cubicIn"
+              "value": 30
+            },
+            {
+              "frame": 3,
+              "value": -30
+            }
+          ]
+        }
+      },
+      "bird/wing1": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.5,
+              "value": -70
+            },
+            {
+              "frame": 1,
+              "value": 0
+            },
+            {
+              "frame": 1.5166666666666666,
+              "value": -70
             },
             {
               "frame": 2,
-              "value": 0,
-              "curve": "cubicOut"
+              "value": 0
+            },
+            {
+              "frame": 2.5166666666666666,
+              "value": -70
+            },
+            {
+              "frame": 3.033333333333333,
+              "value": 0
+            }
+          ]
+        }
+      },
+      "bird/wing2": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.5,
+              "value": -70
+            },
+            {
+              "frame": 1,
+              "value": 0
+            },
+            {
+              "frame": 1.5166666666666666,
+              "value": -70
+            },
+            {
+              "frame": 2,
+              "value": 0
+            },
+            {
+              "frame": 2.5166666666666666,
+              "value": -70
             },
             {
               "frame": 3.0166666666666666,
-              "value": -45,
-              "curve": "cubicIn"
-            },
-            {
-              "frame": 4,
               "value": 0
             }
           ]
