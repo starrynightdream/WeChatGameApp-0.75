@@ -22,7 +22,7 @@ cc.Class({
 
     start () {
         this.type = 0;
-        this.E = 0;
+        this.E = 10;
     },
 
     // update (dt) {},
@@ -34,7 +34,7 @@ cc.Class({
      */
     reSetEng (E = 10){
         this.type = 0;
-        this.E = 10;
+        this.E = E;
 
         return this;
     },

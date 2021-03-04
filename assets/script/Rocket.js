@@ -120,7 +120,7 @@ cc.Class({
             if (Math.abs(fixAng) < Math.PI/16){
                 this.angle = targetAng;
             }else{
-                this.angle += fixAng;
+                this.angle += fixAng * this.k;
             }
         }
 

@@ -1023,7 +1023,7 @@
     "gameControlNode": {
       "__id__": 27
     },
-    "k": 1.5,
+    "k": 0.3,
     "_id": "97D+cB4mBC3oaAqSbYpX8v"
   },
   {
@@ -1538,7 +1538,7 @@
       }
     ],
     "_prefab": null,
-    "_opacity": 255,
+    "_opacity": 0,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
